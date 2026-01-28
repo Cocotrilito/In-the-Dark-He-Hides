@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bu50cxbq1npk2" path="res://scenes/player.tscn" id="1_elqb8"]
 [ext_resource type="Texture2D" uid="uid://dqtgvtcvdv231" path="res://sprites/65ER6147E.png" id="2_rvslj"]
+[ext_resource type="PackedScene" uid="uid://coonvwrx4yhgd" path="res://scenes/Enemy.tscn" id="4_rarhs"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0bbpv"]
 texture = ExtResource("2_rvslj")
@@ -3280,14 +3281,24 @@ texture = ExtResource("2_rvslj")
 
 [sub_resource type="TileSet" id="TileSet_rarhs"]
 physics_layer_0/collision_layer = 1
+physics_layer_0/collision_mask = 6
 sources/0 = SubResource("TileSetAtlasSource_0bbpv")
 
 [node name="Node" type="Node" unique_id=754798034]
 
-[node name="Player" parent="." unique_id=354997750 instance=ExtResource("1_elqb8")]
-position = Vector2(708, 394)
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=3769670]
+position = Vector2(899, 522)
+scale = Vector2(2.0321052, 1.3299999)
+texture = ExtResource("2_rvslj")
 
-[node name="Camera2D" type="Camera2D" parent="Player" unique_id=1816923779]
+[node name="Enemy" parent="." unique_id=533567540 instance=ExtResource("4_rarhs")]
+position = Vector2(76, 101)
+
+[node name="Player" parent="." unique_id=354997750 instance=ExtResource("1_elqb8")]
+position = Vector2(1349, 474)
+
+[node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1412985224]
+color = Color(0.12955853, 0.12955844, 0.12955844, 1)
 
 [node name="TileMap" type="TileMap" parent="." unique_id=304232416]
 position = Vector2(708, 394)

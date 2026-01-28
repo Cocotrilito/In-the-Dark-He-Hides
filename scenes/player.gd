@@ -9,6 +9,18 @@ var cooldown_timer = 0.0
 var is_afraid = false
 var fear_timer = 0.0
 
+func _process(delta):
+	rotate_flashlight()
+	
+
+
+func _ready():
+	add_to_group("player")
+
+func rotate_flashlight():
+	var mouse_pos = get_global_mouse_position()
+	var dir = mouse_pos - global_position
+	$Flashlight.rotation = dir.angle() - PI / 2
 
 func _physics_process(delta):
 	var input_direction = Input.get_vector("left", "right", "up", "down")
@@ -31,3 +43,13 @@ func _physics_process(delta):
 	var current_speed = fear_speed if is_afraid else base_speed
 	velocity = input_direction * current_speed
 	move_and_slide()
+
+func _on_light_area_body_entered(body):
+	print("ENTR0:", body.name)
+	if body.is_in_group("enemies"):
+		body.in_light = true
+
+func _on_light_area_body_exited(body):
+	print("SALIO:", body.name)
+	if body.is_in_group("enemies"):
+		body.in_light = false
