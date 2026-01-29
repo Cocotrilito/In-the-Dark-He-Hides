@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-@export var speed = 40.0
+@export var speed = 350
 @export var retreat_speed = 60.0
 @export var kill_distance = 180.0
 @export var fear_time = 1

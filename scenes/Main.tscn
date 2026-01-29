@@ -5,7 +5,10 @@
 [ext_resource type="Texture2D" uid="uid://dqtgvtcvdv231" path="res://sprites/65ER6147E.png" id="2_rvslj"]
 [ext_resource type="PackedScene" uid="uid://coonvwrx4yhgd" path="res://scenes/Enemy.tscn" id="4_rarhs"]
 [ext_resource type="Script" uid="uid://brr6y2rgg2oku" path="res://scenes/keycard.gd" id="5_c01mt"]
+[ext_resource type="Script" uid="uid://mbesqttayco" path="res://scenes/generator.gd" id="5_nxtc6"]
 [ext_resource type="Texture2D" uid="uid://b2ef306flugea" path="res://icon.svg" id="6_nxtc6"]
+[ext_resource type="Script" uid="uid://di51ws4dnbjs0" path="res://scenes/sample.gd" id="8_jlsqs"]
+[ext_resource type="Script" uid="uid://bxpupxntaofq8" path="res://scenes/simon_panel.gd" id="9_q8u5g"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0bbpv"]
 texture = ExtResource("2_rvslj")
@@ -3290,20 +3293,28 @@ sources/0 = SubResource("TileSetAtlasSource_0bbpv")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rarhs"]
 size = Vector2(1086, 608)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q8u5g"]
+size = Vector2(129, 129)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vcsgt"]
 size = Vector2(1081, 623)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lhr70"]
+size = Vector2(131, 129)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c01mt"]
 size = Vector2(1084, 609)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_q8u5g"]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nxtc6"]
 size = Vector2(1081, 620)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wp0k4"]
+size = Vector2(624, 327)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jlsqs"]
 size = Vector2(371, 380)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_q8u5g"]
-size = Vector2(129, 129)
 
 [node name="Main" type="Node" unique_id=754798034]
 script = ExtResource("1_rarhs")
@@ -3315,11 +3326,13 @@ texture = ExtResource("2_rvslj")
 
 [node name="Enemy" parent="." unique_id=533567540 instance=ExtResource("4_rarhs")]
 position = Vector2(76, 101)
+speed = 350
 
 [node name="Player" parent="." unique_id=354997750 instance=ExtResource("1_elqb8")]
 position = Vector2(1349, 474)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1412985224]
+visible = false
 color = Color(0.12955853, 0.12955844, 0.12955844, 1)
 
 [node name="TileMap" type="TileMap" parent="." unique_id=304232416]
@@ -3339,12 +3352,57 @@ position = Vector2(570, 319)
 position = Vector2(9, 7)
 shape = SubResource("RectangleShape2D_rarhs")
 
+[node name="Keycard" type="Node2D" parent="Room1Area" unique_id=1153874854]
+position = Vector2(-570, -319)
+script = ExtResource("5_c01mt")
+
+[node name="Sprite2D" type="Sprite2D" parent="Room1Area/Keycard" unique_id=315822896]
+position = Vector2(572, 322)
+texture = ExtResource("6_nxtc6")
+
+[node name="Area2D" type="Area2D" parent="Room1Area/Keycard/Sprite2D" unique_id=2051886138]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Room1Area/Keycard/Sprite2D/Area2D" unique_id=977321898]
+position = Vector2(-0.5, 0.5)
+shape = SubResource("RectangleShape2D_q8u5g")
+
+[node name="Label" type="Label" parent="Room1Area/Keycard" unique_id=639399446]
+offset_left = 543.0
+offset_top = 308.0
+offset_right = 638.0
+offset_bottom = 331.0
+text = "PRESS E"
+
 [node name="Room2Area" type="Area2D" parent="." unique_id=538328265]
 position = Vector2(568, 995)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Room2Area" unique_id=1714429001]
 position = Vector2(12.5, -14.5)
 shape = SubResource("RectangleShape2D_vcsgt")
+
+[node name="Generator" type="Node2D" parent="Room2Area" unique_id=1424405097]
+position = Vector2(-463, 234)
+script = ExtResource("5_nxtc6")
+
+[node name="Sprite2D" type="Sprite2D" parent="Room2Area/Generator" unique_id=1877695989]
+position = Vector2(2, -2)
+texture = ExtResource("6_nxtc6")
+
+[node name="Area2D" type="Area2D" parent="Room2Area/Generator" unique_id=2067938173]
+position = Vector2(-465, 223)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Room2Area/Generator/Area2D" unique_id=1986314662]
+position = Vector2(463.5, -223.5)
+shape = SubResource("RectangleShape2D_lhr70")
+
+[node name="GeneratorTimer" type="Timer" parent="Room2Area/Generator" unique_id=1832048049]
+wait_time = 4.0
+one_shot = true
+
+[node name="Label" type="Label" parent="Room2Area/Generator" unique_id=724242606]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Hold E"
 
 [node name="Room3Area" type="Area2D" parent="." unique_id=872194794]
 position = Vector2(2199, 281)
@@ -3353,12 +3411,66 @@ position = Vector2(2199, 281)
 position = Vector2(-97, 47.5)
 shape = SubResource("RectangleShape2D_c01mt")
 
+[node name="Sample" type="Node2D" parent="Room3Area" unique_id=614762270]
+position = Vector2(-225, -189)
+script = ExtResource("8_jlsqs")
+
+[node name="Sprite2D" type="Sprite2D" parent="Room3Area/Sample" unique_id=227457682]
+texture = ExtResource("6_nxtc6")
+
+[node name="Area2D" type="Area2D" parent="Room3Area/Sample/Sprite2D" unique_id=36578604]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Room3Area/Sample/Sprite2D/Area2D" unique_id=711456477]
+scale = Vector2(6.1600194, 6.799999)
+shape = SubResource("CircleShape2D_q8u5g")
+
+[node name="Label" type="Label" parent="Room3Area" unique_id=815931437]
+offset_left = -225.0
+offset_top = -189.0
+offset_right = -185.0
+offset_bottom = -166.0
+scale = Vector2(1.0850096, 0.98707515)
+text = "Press E"
+
 [node name="Room 4Area" type="Area2D" parent="." unique_id=1660351241]
 position = Vector2(2106, 966)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Room 4Area" unique_id=893735325]
 position = Vector2(-4.5, 14)
 shape = SubResource("RectangleShape2D_nxtc6")
+
+[node name="SimonPanel" type="Node2D" parent="Room 4Area" unique_id=1812468053]
+position = Vector2(74, 151)
+script = ExtResource("9_q8u5g")
+room_id = null
+
+[node name="RedLight" type="Sprite2D" parent="Room 4Area/SimonPanel" unique_id=1088392193]
+position = Vector2(174, 108)
+texture = ExtResource("6_nxtc6")
+
+[node name="BlueLight" type="Sprite2D" parent="Room 4Area/SimonPanel" unique_id=1930666255]
+position = Vector2(21, 110)
+texture = ExtResource("6_nxtc6")
+
+[node name="GreenLight" type="Sprite2D" parent="Room 4Area/SimonPanel" unique_id=875134915]
+position = Vector2(-134, 112)
+texture = ExtResource("6_nxtc6")
+
+[node name="YellowLight" type="Sprite2D" parent="Room 4Area/SimonPanel" unique_id=1805436164]
+position = Vector2(-285, 112)
+texture = ExtResource("6_nxtc6")
+
+[node name="Area2D" type="Area2D" parent="Room 4Area/SimonPanel" unique_id=245763839]
+position = Vector2(-56, 114)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Room 4Area/SimonPanel/Area2D" unique_id=789114350]
+position = Vector2(-17, -99.5)
+shape = SubResource("RectangleShape2D_wp0k4")
+
+[node name="HintSprite" type="Sprite2D" parent="Room 4Area/SimonPanel" unique_id=159828200]
+position = Vector2(-55, 206.99998)
+scale = Vector2(1.6015625, 0.328125)
+texture = ExtResource("6_nxtc6")
 
 [node name="ExitArea" type="Area2D" parent="." unique_id=765273861]
 position = Vector2(1342, 1396)
@@ -3367,31 +3479,16 @@ position = Vector2(1342, 1396)
 position = Vector2(-1.5, -72)
 shape = SubResource("RectangleShape2D_jlsqs")
 
-[node name="Keycard" type="Node2D" parent="." unique_id=1153874854]
-script = ExtResource("5_c01mt")
-
-[node name="Sprite2D" type="Sprite2D" parent="Keycard" unique_id=315822896]
-position = Vector2(572, 322)
-texture = ExtResource("6_nxtc6")
-
-[node name="Area2D" type="Area2D" parent="Keycard/Sprite2D" unique_id=2051886138]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Keycard/Sprite2D/Area2D" unique_id=977321898]
-position = Vector2(-0.5, 0.5)
-shape = SubResource("RectangleShape2D_q8u5g")
-
-[node name="Label" type="Label" parent="Keycard" unique_id=639399446]
-offset_left = 543.0
-offset_top = 308.0
-offset_right = 638.0
-offset_bottom = 331.0
-text = "PRESS E"
-
 [connection signal="timeout" from="PuzzleTimer" to="." method="_on_puzzle_timer_timeout"]
 [connection signal="body_entered" from="Room1Area" to="." method="_on_room_1_area_body_entered"]
+[connection signal="body_entered" from="Room1Area/Keycard/Sprite2D/Area2D" to="Room1Area/Keycard" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Room1Area/Keycard/Sprite2D/Area2D" to="Room1Area/Keycard" method="_on_area_2d_body_exited"]
 [connection signal="body_entered" from="Room2Area" to="." method="_on_room_2_area_body_entered"]
+[connection signal="body_entered" from="Room2Area/Generator/Area2D" to="Room2Area/Generator" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Room2Area/Generator/Area2D" to="Room2Area/Generator" method="_on_area_2d_body_exited"]
+[connection signal="timeout" from="Room2Area/Generator/GeneratorTimer" to="Room2Area/Generator" method="_on_generator_timer_timeout"]
 [connection signal="body_entered" from="Room3Area" to="." method="_on_room_3_area_body_entered"]
+[connection signal="body_entered" from="Room3Area/Sample/Sprite2D/Area2D" to="Room3Area/Sample" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Room3Area/Sample/Sprite2D/Area2D" to="Room3Area/Sample" method="_on_area_2d_body_exited"]
 [connection signal="body_entered" from="Room 4Area" to="." method="_on_room_4_area_body_entered"]
 [connection signal="body_entered" from="ExitArea" to="." method="_on_exit_area_body_entered"]
-[connection signal="body_entered" from="Keycard/Sprite2D/Area2D" to="Keycard" method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="Keycard/Sprite2D/Area2D" to="Keycard" method="_on_area_2d_body_exited"]
