@@ -56,7 +56,7 @@ func puzzle_succes():
 	$Sprite2D.visible = false
 	$Label.visible = false
 	
-	get_node("/root/Main").has_keycard = true
+	GameState.has_keycard = true
 	
 func puzzle_fail():
 	print("Puzzle Failed")

@@ -51,4 +51,4 @@ func _on_generator_timer_timeout():
 	activating = false
 	$Label.visible = false
 	
-	get_node("/root/Main").generator_on = true
+	GameState.generator_on = true

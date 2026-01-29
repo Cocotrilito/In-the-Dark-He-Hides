@@ -1,6 +1,6 @@
-extends Node2D
+extends StaticBody2D
 
-@export var required_flag = "has_keycard"
+@export var required_flag = "generator_on"
 @export var locked_message = "Door locked"
 @onready var sprite = $Sprite2D
 @onready var collider = $Blocker

@@ -68,7 +68,7 @@ func puzzle_succes():
 		print("simon solved")
 		puzzle_active = false
 		$HintSprite.visible = false
-		get_node("/root/Main").simon_done = true
+		GameState.simon_done = true
 		
 func puzzle_fail():
 		print("puzzle failed")

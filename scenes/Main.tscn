@@ -9,10 +9,10 @@
 [ext_resource type="Texture2D" uid="uid://b2ef306flugea" path="res://icon.svg" id="6_nxtc6"]
 [ext_resource type="Script" uid="uid://di51ws4dnbjs0" path="res://scenes/sample.gd" id="8_jlsqs"]
 [ext_resource type="Script" uid="uid://bxpupxntaofq8" path="res://scenes/simon_panel.gd" id="9_q8u5g"]
-[ext_resource type="Script" uid="uid://c0qgui2gxllfs" path="res://scenes/door_keycard_to_sample.gd" id="10_bjd11"]
 [ext_resource type="Script" uid="uid://bsv66wx21wul6" path="res://scenes/door_keycard_to_generator.gd" id="10_lhr70"]
 [ext_resource type="Script" uid="uid://c1uxuodjyivpa" path="res://scenes/exit_area.gd" id="10_qmy6f"]
-[ext_resource type="Script" uid="uid://clunqx7m4ly68" path="res://scenes/door_keycard_to_simon.gd" id="10_wp0k4"]
+[ext_resource type="Script" uid="uid://cxvhpnrsuohpg" path="res://scenes/door_generator_to_simon.gd" id="12_bjd11"]
+[ext_resource type="Script" uid="uid://dnxnw5h5r1qhi" path="res://scenes/door_simon_to_sample.gd" id="13_qmy6f"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0bbpv"]
 texture = ExtResource("2_rvslj")
@@ -3321,7 +3321,23 @@ size = Vector2(624, 327)
 size = Vector2(371, 380)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bjd11"]
-size = Vector2(36, 283)
+size = Vector2(42, 283)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qmy6f"]
+radius = 69.0
+height = 292.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qmy6f"]
+size = Vector2(24, 298)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mwfav"]
+size = Vector2(41, 291)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3p2gp"]
+size = Vector2(40, 290)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cvmbd"]
+size = Vector2(26, 312)
 
 [node name="Main" type="Node" unique_id=754798034]
 script = ExtResource("1_rarhs")
@@ -3487,55 +3503,62 @@ script = ExtResource("10_qmy6f")
 position = Vector2(-1.5, -72)
 shape = SubResource("RectangleShape2D_jlsqs")
 
-[node name="Door_Keycard_To_Sample" type="Node2D" parent="." unique_id=349740213]
-position = Vector2(1553, 303)
-script = ExtResource("10_bjd11")
-metadata/_edit_group_ = true
-
-[node name="Sprite2D" type="Sprite2D" parent="Door_Keycard_To_Sample" unique_id=1163080588]
-position = Vector2(-11, 28.999996)
-scale = Vector2(0.3203125, 2.2265625)
-texture = ExtResource("6_nxtc6")
-
-[node name="Area2D" type="Area2D" parent="Door_Keycard_To_Sample" unique_id=381680995]
-position = Vector2(-20, 29)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Door_Keycard_To_Sample/Area2D" unique_id=821168567]
-position = Vector2(8, 3.5)
-shape = SubResource("RectangleShape2D_bjd11")
-
-[node name="Door_Keycard_To_Simon" type="Node2D" parent="." unique_id=17155595]
-position = Vector2(1554, 955)
-script = ExtResource("10_wp0k4")
-metadata/_edit_group_ = true
-
-[node name="Sprite2D" type="Sprite2D" parent="Door_Keycard_To_Simon" unique_id=1086639753]
-position = Vector2(-11, 28.999996)
-scale = Vector2(0.3203125, 2.2265625)
-texture = ExtResource("6_nxtc6")
-
-[node name="Area2D" type="Area2D" parent="Door_Keycard_To_Simon" unique_id=1389108053]
-position = Vector2(-20, 29)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Door_Keycard_To_Simon/Area2D" unique_id=1402153904]
-position = Vector2(8, 3.5)
-shape = SubResource("RectangleShape2D_bjd11")
-
-[node name="Door_Keycard_To_Generator" type="Node2D" parent="." unique_id=1121571019]
-position = Vector2(1150, 953)
+[node name="Door_Keycard_To_Generator" type="StaticBody2D" parent="." unique_id=1267337188]
+position = Vector2(1152, 971)
 script = ExtResource("10_lhr70")
 
 [node name="Sprite2D" type="Sprite2D" parent="Door_Keycard_To_Generator" unique_id=110685630]
-position = Vector2(-11, 28.999996)
-scale = Vector2(0.3203125, 2.2265625)
+position = Vector2(0, 16.999996)
+scale = Vector2(0.4335938, 2.2265625)
 texture = ExtResource("6_nxtc6")
 
-[node name="Area2D" type="Area2D" parent="Door_Keycard_To_Generator" unique_id=1282312087]
-position = Vector2(-20, 29)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Door_Keycard_To_Generator/Area2D" unique_id=1447639550]
-position = Vector2(8, 3.5)
+[node name="Blocker" type="CollisionShape2D" parent="Door_Keycard_To_Generator" unique_id=1447639550]
+position = Vector2(-8, 13)
 shape = SubResource("RectangleShape2D_bjd11")
+
+[node name="Area2D" type="Area2D" parent="Door_Keycard_To_Generator" unique_id=1282312087]
+position = Vector2(3, 18)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Door_Keycard_To_Generator/Area2D" unique_id=1867153491]
+shape = SubResource("CapsuleShape2D_qmy6f")
+
+[node name="Door_Generator_To_Simon" type="StaticBody2D" parent="." unique_id=2015190085]
+position = Vector2(1546, 982)
+script = ExtResource("12_bjd11")
+
+[node name="Sprite2D" type="Sprite2D" parent="Door_Generator_To_Simon" unique_id=557948797]
+position = Vector2(-4.500021, 2.9999955)
+scale = Vector2(0.33593783, 2.296875)
+texture = ExtResource("6_nxtc6")
+
+[node name="Blocker" type="CollisionShape2D" parent="Door_Generator_To_Simon" unique_id=1816202750]
+position = Vector2(2, 0)
+shape = SubResource("RectangleShape2D_qmy6f")
+
+[node name="Area2D" type="Area2D" parent="Door_Generator_To_Simon" unique_id=515691928]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Door_Generator_To_Simon/Area2D" unique_id=1921180053]
+position = Vector2(-14, 4)
+shape = SubResource("RectangleShape2D_mwfav")
+
+[node name="Door_Simon_To_Sample" type="StaticBody2D" parent="." unique_id=1654670256]
+position = Vector2(1541, 337)
+script = ExtResource("13_qmy6f")
+
+[node name="Sprite2D" type="Sprite2D" parent="Door_Simon_To_Sample" unique_id=1105571492]
+position = Vector2(-0.49998474, -9.500004)
+scale = Vector2(0.30468726, 2.2578125)
+texture = ExtResource("6_nxtc6")
+
+[node name="Blocker" type="CollisionShape2D" parent="Door_Simon_To_Sample" unique_id=1216637598]
+position = Vector2(0, -10)
+shape = SubResource("RectangleShape2D_3p2gp")
+
+[node name="Area2D" type="Area2D" parent="Door_Simon_To_Sample" unique_id=2074956893]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Door_Simon_To_Sample/Area2D" unique_id=2012218439]
+position = Vector2(-13, -12)
+shape = SubResource("RectangleShape2D_cvmbd")
 
 [connection signal="timeout" from="PuzzleTimer" to="." method="_on_puzzle_timer_timeout"]
 [connection signal="body_entered" from="Room1Area" to="." method="_on_room_1_area_body_entered"]
@@ -3553,6 +3576,6 @@ shape = SubResource("RectangleShape2D_bjd11")
 [connection signal="body_exited" from="Room 4Area/SimonPanel/Area2D" to="Room 4Area/SimonPanel" method="_on_area_2d_body_exited"]
 [connection signal="body_entered" from="ExitArea" to="." method="_on_exit_area_body_entered"]
 [connection signal="body_entered" from="ExitArea" to="ExitArea" method="_on_body_entered"]
-[connection signal="body_entered" from="Door_Keycard_To_Sample/Area2D" to="Door_Keycard_To_Sample" method="_on_area_2d_body_entered"]
-[connection signal="body_entered" from="Door_Keycard_To_Simon/Area2D" to="Door_Keycard_To_Simon" method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="Door_Keycard_To_Generator/Area2D" to="Door_Keycard_To_Generator" method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="Door_Generator_To_Simon/Area2D" to="Door_Generator_To_Simon" method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="Door_Simon_To_Sample/Area2D" to="Door_Simon_To_Sample" method="_on_area_2d_body_entered"]
