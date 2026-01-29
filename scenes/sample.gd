@@ -30,4 +30,4 @@ func collect_sample():
 	$Sprite2D.visible = false
 	$"../Label".visible = false
 	print("sample collected")
-	get_node("/root/Main").rooms_completed[room_id] = true
+	get_node("/root/Main").has_sample = true
