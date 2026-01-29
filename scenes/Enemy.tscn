@@ -3,27 +3,26 @@
 [ext_resource type="Script" uid="uid://brid8npxe0egr" path="res://scenes/enemy.gd" id="1_55jtl"]
 [ext_resource type="Texture2D" uid="uid://b2ef306flugea" path="res://icon.svg" id="2_mpr68"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_55jtl"]
-radius = 86.40602
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_55jtl"]
+size = Vector2(126, 126)
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_55jtl"]
-radius = 86.0
-height = 174.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_mpr68"]
+radius = 88.0
 
 [node name="Enemy" type="CharacterBody2D" unique_id=533567540]
 collision_layer = 2
 script = ExtResource("1_55jtl")
+speed = 100.0
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1164318676]
 texture = ExtResource("2_mpr68")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=253114326]
-shape = SubResource("CircleShape2D_55jtl")
+shape = SubResource("RectangleShape2D_55jtl")
 
-[node name="Area2D" type="Area2D" parent="." unique_id=1622532563]
+[node name="KillArea" type="Area2D" parent="." unique_id=517335211]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=601247482]
-shape = SubResource("CapsuleShape2D_55jtl")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KillArea" unique_id=636115544]
+shape = SubResource("CircleShape2D_mpr68")
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="KillArea" to="." method="_on_kill_area_body_entered"]

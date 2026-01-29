@@ -3309,6 +3309,7 @@ size = Vector2(129, 129)
 script = ExtResource("1_rarhs")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=3769670]
+visible = false
 position = Vector2(1311.375, 642.37506)
 scale = Vector2(2.900263, 1.6132352)
 texture = ExtResource("2_rvslj")
@@ -3320,6 +3321,7 @@ position = Vector2(76, 101)
 position = Vector2(1349, 474)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1412985224]
+visible = false
 color = Color(0.12955853, 0.12955844, 0.12955844, 1)
 
 [node name="TileMap" type="TileMap" parent="." unique_id=304232416]

@@ -45,11 +45,11 @@ func _physics_process(delta):
 	move_and_slide()
 
 func _on_light_area_body_entered(body):
-	print("ENTR0:", body.name)
+	
 	if body.is_in_group("enemies"):
 		body.in_light = true
 
 func _on_light_area_body_exited(body):
-	print("SALIO:", body.name)
+	
 	if body.is_in_group("enemies"):
 		body.in_light = false

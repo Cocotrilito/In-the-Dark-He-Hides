@@ -3320,6 +3320,7 @@ position = Vector2(76, 101)
 position = Vector2(1349, 474)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1412985224]
+visible = false
 color = Color(0.12955853, 0.12955844, 0.12955844, 1)
 
 [node name="TileMap" type="TileMap" parent="." unique_id=304232416]
