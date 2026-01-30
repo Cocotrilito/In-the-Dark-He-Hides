@@ -12,7 +12,6 @@ radius = 88.0
 [node name="Enemy" type="CharacterBody2D" unique_id=533567540]
 collision_layer = 2
 script = ExtResource("1_55jtl")
-speed = 100.0
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1164318676]
 texture = ExtResource("2_mpr68")
@@ -24,5 +23,13 @@ shape = SubResource("RectangleShape2D_55jtl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KillArea" unique_id=636115544]
 shape = SubResource("CircleShape2D_mpr68")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=1511872212]
+path_desired_distance = 4.0
+target_desired_distance = 4.0
+avoidance_enabled = true
+debug_enabled = true
+debug_use_custom = true
+debug_path_custom_color = Color(1, 0, 0.019607844, 1)
 
 [connection signal="body_entered" from="KillArea" to="." method="_on_kill_area_body_entered"]

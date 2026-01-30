@@ -6,6 +6,11 @@ extends CharacterBody2D
 @export var kill_distance = 180.0
 @export var fear_time = 1
 @export var calm_time = 0.5
+@onready var agent: NavigationAgent2D = $NavigationAgent2D
+
+
+
+
 
 var calm_timer = 0.0
 var fear_timer = 0.0
@@ -16,6 +21,8 @@ var is_afraid = false
 func _ready():
 	add_to_group("enemies")
 	call_deferred("_find_player")
+	agent.path_desired_distance = 8
+	agent.target_desired_distance = 8
 func _find_player():
 	player = get_tree().get_first_node_in_group("player")
 
@@ -26,8 +33,14 @@ func _physics_process(delta):
 	if player == null:
 		print("NO PLAYER")
 		return
-	var diff = player.global_position - global_position
-	var dir = diff.normalized()
+	agent.target_position = player.global_position
+	if agent.is_navigation_finished():
+		print("NO PATH")
+	
+	
+	var next_pos = agent.get_next_path_position()
+	var dir = (next_pos - global_position).normalized()
+	
 	
 	if in_light and not is_afraid and calm_timer <= 0:
 		is_afraid = true
