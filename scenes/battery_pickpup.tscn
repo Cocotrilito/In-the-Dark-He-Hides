@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://bfjytvecuwyoo"]
+
+[ext_resource type="Script" uid="uid://c0b5pccqncc43" path="res://battery_pickpup.gd" id="1_wwqs4"]
+[ext_resource type="Texture2D" uid="uid://b2ef306flugea" path="res://icon.svg" id="2_id7kl"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t0a33"]
+radius = 55.0
+height = 176.0
+
+[node name="BatteryPickpup" type="Area2D" unique_id=121274748]
+script = ExtResource("1_wwqs4")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1164406921]
+texture = ExtResource("2_id7kl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=652872555]
+shape = SubResource("CapsuleShape2D_t0a33")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
