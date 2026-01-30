@@ -4,15 +4,31 @@ var base_speed = 400.0
 @export var fear_speed = 600
 @export var fear_duration = 0.4
 @export var fear_cooldown = 10.0
+@export var  max_battery = 100.0
+@export var drain_per_second = 20.0
+@onready var flashlight: PointLight2D = $Flashlight/PointLight2D
+@onready var light_area: Area2D = $Flashlight/PointLight2D/LightArea
 
+
+var battery = max_battery
+var flashlight_on = false
 var cooldown_timer = 0.0
 var is_afraid = false
 var fear_timer = 0.0
 
 func _process(delta):
 	rotate_flashlight()
-	
-
+	if flashlight_on:
+		battery -= drain_per_second * delta
+		if battery <= 0:
+			battery = 0
+			flashlight_on = false
+			flashlight.visible = false
+func _input(event):
+	if event.is_action("flashlight") and battery > 0:
+		flashlight_on = !flashlight_on
+		flashlight.visible = flashlight_on
+		
 
 func _ready():
 	add_to_group("player")

@@ -35,8 +35,8 @@ func _physics_process(delta):
 		return
 	agent.target_position = player.global_position
 	if agent.is_navigation_finished():
+		return
 		print("NO PATH")
-	
 	
 	var next_pos = agent.get_next_path_position()
 	var dir = (next_pos - global_position).normalized()
