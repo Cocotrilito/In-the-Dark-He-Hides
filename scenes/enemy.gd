@@ -8,6 +8,7 @@ extends CharacterBody2D
 @export var calm_time = 0.5
 @onready var agent: NavigationAgent2D = $NavigationAgent2D
 @onready var sprite: AnimatedSprite2D = $Sprite2D
+@onready var footsteps = $FootstepsEnemy
 
 
 
@@ -68,8 +69,21 @@ func _physics_process(delta):
 		play_anim("chase_dark")
 		velocity  = dir * speed
 	move_and_slide()
-
-
+	var is_moving = velocity.length() > 10
+	if is_moving and calm_timer <= 0:
+		if not footsteps.playing:
+			footsteps.play()
+	else:
+		if footsteps.playing:
+			footsteps.stop()
+	if player:
+		var distance = global_position.distance_to(player.global_position)
+		footsteps.volume_db = clamp(-12 - distance / 35, -40, -12)
+		
+		if not is_afraid and calm_timer <= 0:
+			footsteps.pitch_scale = 1.1
+		else:
+			footsteps.pitch_scale = 0.95
 
 
 func _on_kill_area_body_entered(body):

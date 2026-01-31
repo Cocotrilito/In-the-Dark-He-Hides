@@ -301,7 +301,7 @@ texture = ExtResource("2_rvslj")
 position = Vector2(99, 492)
 
 [node name="Player" parent="." unique_id=354997750 instance=ExtResource("1_elqb8")]
-position = Vector2(1349, 474)
+position = Vector2(1349, 24)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1412985224]
 color = Color(0.12955853, 0.12955844, 0.12955844, 1)

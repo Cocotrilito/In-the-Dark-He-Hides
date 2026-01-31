@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://dyfueilbuyeq6" path="res://scenes/player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://u8oaapwqrtwd" path="res://sprites/SpriteSheetMa2.png" id="2_qhqgy"]
 [ext_resource type="Texture2D" uid="uid://cmibx6d6cuwns" path="res://sprites/wewewewe.jpg" id="3_qhqgy"]
+[ext_resource type="AudioStream" uid="uid://c53w311v14vty" path="res://FX/footsteps_player.wav" id="4_dqkch"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dqkch"]
 atlas = ExtResource("2_qhqgy")
@@ -218,7 +219,7 @@ texture_filter = 1
 scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_smehm")
 animation = &"walk_side"
-frame_progress = 0.16355217
+frame_progress = 0.92096907
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=190662540]
 position = Vector2(-10, -0.5)
@@ -242,6 +243,10 @@ position = Vector2(-1.4250565, -7.6293945e-06)
 polygon = PackedVector2Array(0.71250916, 0, -91.20285, 188.92068, 98.328094, 188.92068)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=647797553]
+
+[node name="Footsteps" type="AudioStreamPlayer2D" parent="." unique_id=206245548]
+stream = ExtResource("4_dqkch")
+volume_db = 2.0
 
 [connection signal="body_entered" from="Flashlight/PointLight2D/LightArea" to="." method="_on_light_area_body_entered"]
 [connection signal="body_exited" from="Flashlight/PointLight2D/LightArea" to="." method="_on_light_area_body_exited"]

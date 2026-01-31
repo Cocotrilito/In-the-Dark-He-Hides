@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://brid8npxe0egr" path="res://scenes/enemy.gd" id="1_55jtl"]
 [ext_resource type="Texture2D" uid="uid://deiwtv84igufb" path="res://sprites/gUY.png" id="2_55jtl"]
+[ext_resource type="AudioStream" uid="uid://j2dw37p0ucgp" path="res://FX/footsteps_enemy.wav" id="3_mpr68"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mpr68"]
 atlas = ExtResource("2_55jtl")
@@ -87,7 +88,7 @@ texture_filter = 1
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_1gqeq")
 animation = &"chase_dark"
-frame_progress = 0.38103485
+frame_progress = 0.5038053
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=253114326]
 shape = SubResource("CircleShape2D_55jtl")
@@ -100,13 +101,15 @@ shape = SubResource("CircleShape2D_mpr68")
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=1511872212]
 path_desired_distance = 4.0
 target_desired_distance = 4.0
-debug_enabled = true
 debug_use_custom = true
 debug_path_custom_color = Color(1, 0, 0.019607844, 1)
 
 [node name="Timer" type="Timer" parent="." unique_id=401629884]
 wait_time = 0.5
 autostart = true
+
+[node name="FootstepsEnemy" type="AudioStreamPlayer2D" parent="." unique_id=1268714018]
+stream = ExtResource("3_mpr68")
 
 [connection signal="body_entered" from="KillArea" to="." method="_on_kill_area_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

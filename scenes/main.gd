@@ -5,6 +5,9 @@ var generator_on = false
 var simon_done = false
 var has_sample = false
 
+func _ready():
+	AudioManager.play_music()
+
 func start_puzzle():
 	$PuzzleTimer.start()
 

@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://bmutk1nlp4c3q"]
+
+[ext_resource type="Script" uid="uid://cfyp7op6ileea" path="res://phone.gd" id="1_0e3g3"]
+[ext_resource type="Texture2D" uid="uid://ortbws2dhi0p" path="res://sprites/phone.png" id="2_hfnv5"]
+[ext_resource type="FontFile" uid="uid://cbnfihl2xpd8b" path="res://sprites/VT323-Regular.ttf" id="3_17gxr"]
+[ext_resource type="AudioStream" uid="uid://dykb2qf6vyxa6" path="res://FX/phone_ring2.wav" id="3_tpglx"]
+[ext_resource type="AudioStream" uid="uid://dyafxe3qs5uv7" path="res://FX/phone_call.wav" id="4_idgle"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tpglx"]
+size = Vector2(305, 95.875)
+
+[node name="Phone" type="Node2D" unique_id=1863837044]
+script = ExtResource("1_0e3g3")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=340866374]
+scale = Vector2(6, 6)
+texture = ExtResource("2_hfnv5")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=388026300]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=346449037]
+position = Vector2(0, 45)
+shape = SubResource("RectangleShape2D_tpglx")
+
+[node name="ring" type="AudioStreamPlayer2D" parent="." unique_id=993641980]
+stream = ExtResource("3_tpglx")
+volume_db = -15.0
+
+[node name="voice" type="AudioStreamPlayer2D" parent="." unique_id=1814804697]
+stream = ExtResource("4_idgle")
+volume_db = 2.51
+
+[node name="Label" type="Label" parent="." unique_id=1445939127]
+offset_left = -50.0
+offset_top = -93.0
+offset_right = 53.0
+offset_bottom = -60.0
+theme_override_fonts/font = ExtResource("3_17gxr")
+theme_override_font_sizes/font_size = 32
+text = "Answer E"
+metadata/_edit_use_anchors_ = true
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

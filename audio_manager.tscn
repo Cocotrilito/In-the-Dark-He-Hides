@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://fu3dvepo2rwp"]
+
+[ext_resource type="Script" uid="uid://ch4g2dvy8n8cw" path="res://AudioManager.gd" id="1_bq1v2"]
+[ext_resource type="AudioStream" uid="uid://br3h8wggh2i7m" path="res://FX/music_ambient.wav" id="1_jisk1"]
+[ext_resource type="AudioStream" uid="uid://bb3wjc4rhwhbx" path="res://FX/rain2.wav" id="3_6jj5d"]
+
+[node name="AudioManager" type="Node" unique_id=732833145]
+script = ExtResource("1_bq1v2")
+
+[node name="Music" type="AudioStreamPlayer" parent="." unique_id=743506574]
+stream = ExtResource("1_jisk1")
+
+[node name="Rain" type="AudioStreamPlayer" parent="." unique_id=262679077]
+stream = ExtResource("3_6jj5d")
+volume_db = -17.0
