@@ -7,6 +7,7 @@ extends CharacterBody2D
 @export var fear_time = 1
 @export var calm_time = 0.5
 @onready var agent: NavigationAgent2D = $NavigationAgent2D
+@onready var sprite: AnimatedSprite2D = $Sprite2D
 
 
 
@@ -23,10 +24,14 @@ func _ready():
 	call_deferred("_find_player")
 	agent.path_desired_distance = 8
 	agent.target_desired_distance = 8
+	sprite.play("chase_dark")
 func _find_player():
 	player = get_tree().get_first_node_in_group("player")
 
-
+#ANIMACION
+func play_anim(name: String):
+	if sprite.animation != name:
+		sprite.play(name)
 
 
 func _physics_process(delta):
@@ -48,6 +53,7 @@ func _physics_process(delta):
 	
 	#aqui va el miedo
 	if is_afraid:
+		play_anim("chase_light")
 		fear_timer -= delta
 		velocity = -dir * retreat_speed
 		if fear_timer <= 0:
@@ -55,9 +61,11 @@ func _physics_process(delta):
 			calm_timer = calm_time
 	#aqui va la calma
 	elif calm_timer > 0:
+		
 		calm_timer -= delta
 		velocity = Vector2.ZERO
 	else:
+		play_anim("chase_dark")
 		velocity  = dir * speed
 	move_and_slide()
 

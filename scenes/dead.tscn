@@ -29,7 +29,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme_override_fonts/font = ExtResource("2_tnkcu")
 theme_override_font_sizes/font_size = 56
-text = "HE CATCHED YOU"
+text = "HE CAUGHT YOU"
 
 [node name="restart" type="Button" parent="VBoxContainer" unique_id=1867212304]
 layout_mode = 2

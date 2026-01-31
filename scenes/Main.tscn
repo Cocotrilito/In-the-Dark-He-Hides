@@ -549,6 +549,7 @@ show_percentage = false
 
 [node name="PauseMenu" type="CanvasLayer" parent="CanvasLayer" unique_id=175287626]
 process_mode = 3
+visible = false
 script = ExtResource("19_nfivy")
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer/PauseMenu" unique_id=607273395]

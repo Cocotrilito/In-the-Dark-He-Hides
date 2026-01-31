@@ -3,7 +3,7 @@ extends Control
 
 
 func _on_restart_pressed():
-	$FadeLayer.fade_to("res://scenes/MainMenu.tscn")
+	get_tree().change_scene_to_file("res://scenes/MainMenu.tscn")
 
 
 

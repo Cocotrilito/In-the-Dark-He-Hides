@@ -8,8 +8,9 @@ var base_speed = 400.0
 @export var drain_per_second = 10.0
 @onready var flashlight: PointLight2D = $Flashlight/PointLight2D
 @onready var light_area: Area2D = $Flashlight/PointLight2D/LightArea
+@onready var sprite: AnimatedSprite2D = $Sprite2D
 
-
+var last_direction = "down"
 var battery = max_battery
 var flashlight_on = false
 var cooldown_timer = 0.0
@@ -82,7 +83,7 @@ func rotate_flashlight():
 
 func _physics_process(delta):
 	var input_direction = Input.get_vector("left", "right", "up", "down")
-	
+	update_animation(input_direction)
 	if cooldown_timer > 0:
 		cooldown_timer -= delta
 	
@@ -101,6 +102,21 @@ func _physics_process(delta):
 	var current_speed = fear_speed if is_afraid else base_speed
 	velocity = input_direction * current_speed
 	move_and_slide()
+#animaciones
+func update_animation(input_dir: Vector2):
+	if input_dir == Vector2.ZERO:
+		sprite.play("idle_" + last_direction)
+		return
+	if abs(input_dir.x) > abs(input_dir.y):
+		last_direction = "side"
+		sprite.flip_h = input_dir.x < 0
+	else:
+		if input_dir.y > 0:
+			last_direction = "down"
+		else:
+			last_direction = "up"
+			sprite.flip_h = false
+	sprite.play("walk_" + last_direction)
 
 func _on_light_area_body_entered(body):
 	
