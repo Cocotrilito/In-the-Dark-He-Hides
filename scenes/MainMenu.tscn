@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://cdxrva107nuuy"]
+
+[ext_resource type="Script" uid="uid://c5ryi1el2tb01" path="res://scenes/main_menu.gd" id="1_0ykhv"]
+[ext_resource type="FontFile" uid="uid://cbnfihl2xpd8b" path="res://sprites/VT323-Regular.ttf" id="2_2wh52"]
+
+[node name="Control" type="Control" unique_id=975058764]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1159.0
+offset_bottom = 645.0
+script = ExtResource("1_0ykhv")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=844882097]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 6.0
+offset_right = 1154.0
+offset_bottom = 654.0
+color = Color(0.3137255, 0.3137255, 0.3137255, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=105650802]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -117.0
+offset_top = -43.25
+offset_right = 117.0
+offset_bottom = 3.75
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="VBoxContainer" unique_id=1962062523]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("2_2wh52")
+theme_override_font_sizes/font_size = 45
+text = "IN THE DARK HE HIDES"
+
+[node name="play" type="Button" parent="VBoxContainer" unique_id=2023209045]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_2wh52")
+theme_override_font_sizes/font_size = 32
+text = "PLAY	"
+
+[node name="quit" type="Button" parent="VBoxContainer" unique_id=2121098448]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_2wh52")
+theme_override_font_sizes/font_size = 32
+text = "QUIT"
+
+[connection signal="pressed" from="VBoxContainer/play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="VBoxContainer/quit" to="." method="_on_quit_pressed"]

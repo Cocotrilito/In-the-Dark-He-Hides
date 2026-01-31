@@ -8,6 +8,6 @@ func _on_body_entered(body):
 	
 	if GameState.has_sample:
 		print("freedom")
-		get_tree().change_scene_to_file("res://scenes/Main.tscn")
+		get_tree().change_scene_to_file("res://scenes/Win.tscn")
 	else:
 		print("Exit locked sample missing")

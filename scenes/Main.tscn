@@ -10,12 +10,15 @@
 [ext_resource type="Texture2D" uid="uid://b2ef306flugea" path="res://icon.svg" id="6_nxtc6"]
 [ext_resource type="Texture2D" uid="uid://bp277nagjdsj7" path="res://sprites/Tileset32x32withfloor .png" id="7_cvmbd"]
 [ext_resource type="Script" uid="uid://di51ws4dnbjs0" path="res://scenes/sample.gd" id="8_jlsqs"]
+[ext_resource type="Script" uid="uid://ch5m6s330l5n1" path="res://scenes/hint.gd" id="9_bb450"]
 [ext_resource type="Script" uid="uid://bxpupxntaofq8" path="res://scenes/simon_panel.gd" id="9_q8u5g"]
+[ext_resource type="FontFile" uid="uid://cbnfihl2xpd8b" path="res://sprites/VT323-Regular.ttf" id="10_ft6cd"]
 [ext_resource type="Script" uid="uid://bsv66wx21wul6" path="res://scenes/door_keycard_to_generator.gd" id="10_lhr70"]
 [ext_resource type="Script" uid="uid://c1uxuodjyivpa" path="res://scenes/exit_area.gd" id="10_qmy6f"]
 [ext_resource type="Script" uid="uid://cxvhpnrsuohpg" path="res://scenes/door_generator_to_simon.gd" id="12_bjd11"]
 [ext_resource type="Script" uid="uid://dnxnw5h5r1qhi" path="res://scenes/door_simon_to_sample.gd" id="13_qmy6f"]
 [ext_resource type="PackedScene" uid="uid://bfjytvecuwyoo" path="res://scenes/battery_pickpup.tscn" id="16_cvmbd"]
+[ext_resource type="Script" uid="uid://63ma3tkxmku5" path="res://scenes/pause_menu.gd" id="19_nfivy"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_3p2gp"]
 vertices = PackedVector2Array(16, 16, -16, 16, -16, -16, 16, -16)
@@ -231,6 +234,7 @@ size = Vector2(131, 129)
 size = Vector2(1089, 572.5)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_q8u5g"]
+radius = 14.450992
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nxtc6"]
 size = Vector2(1081, 573)
@@ -294,7 +298,6 @@ position = Vector2(99, 492)
 position = Vector2(1349, 474)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1412985224]
-visible = false
 color = Color(0.12955853, 0.12955844, 0.12955844, 1)
 
 [node name="PuzzleTimer" type="Timer" parent="." unique_id=1108178141]
@@ -324,11 +327,22 @@ position = Vector2(-0.5, 0.5)
 shape = SubResource("RectangleShape2D_q8u5g")
 
 [node name="Label" type="Label" parent="Room1Area/Keycard" unique_id=639399446]
-offset_left = 543.0
-offset_top = 308.0
-offset_right = 638.0
-offset_bottom = 331.0
+offset_left = 531.0
+offset_top = 335.0
+offset_right = 626.0
+offset_bottom = 368.0
+theme_override_fonts/font = ExtResource("10_ft6cd")
+theme_override_font_sizes/font_size = 32
 text = "PRESS E"
+
+[node name="Hint" type="Node2D" parent="Room1Area/Keycard" unique_id=1080038801]
+position = Vector2(575, 190)
+script = ExtResource("9_bb450")
+
+[node name="Sprite2D" type="Sprite2D" parent="Room1Area/Keycard/Hint" unique_id=841197595]
+position = Vector2(0.9999924, 233)
+scale = Vector2(2.046875, 0.359375)
+texture = ExtResource("6_nxtc6")
 
 [node name="Room2Area" type="Area2D" parent="." unique_id=538328265]
 position = Vector2(568, 995)
@@ -357,8 +371,12 @@ wait_time = 4.0
 one_shot = true
 
 [node name="Label" type="Label" parent="Room2Area/Generator" unique_id=724242606]
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = -37.0
+offset_top = -54.0
+offset_right = 44.0
+offset_bottom = -19.0
+theme_override_fonts/font = ExtResource("10_ft6cd")
+theme_override_font_sizes/font_size = 34
 text = "Hold E"
 
 [node name="Room3Area" type="Area2D" parent="." unique_id=872194794]
@@ -382,11 +400,13 @@ scale = Vector2(6.1600194, 6.799999)
 shape = SubResource("CircleShape2D_q8u5g")
 
 [node name="Label" type="Label" parent="Room3Area" unique_id=815931437]
-offset_left = -225.0
-offset_top = -189.0
-offset_right = -185.0
-offset_bottom = -166.0
+offset_left = -367.0
+offset_top = -198.0
+offset_right = -277.0
+offset_bottom = -165.0
 scale = Vector2(1.0850096, 0.98707515)
+theme_override_fonts/font = ExtResource("10_ft6cd")
+theme_override_font_sizes/font_size = 32
 text = "Press E"
 
 [node name="Room 4Area" type="Area2D" parent="." unique_id=1660351241]
@@ -512,8 +532,93 @@ anchors_preset = 0
 [node name="BatteryBar" type="ProgressBar" parent="CanvasLayer/UI" unique_id=1118428164]
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 1
-offset_right = 164.0
-offset_bottom = 40.0
+offset_left = 10.0
+offset_top = 12.0
+offset_right = 174.0
+offset_bottom = 52.0
+show_percentage = false
+
+[node name="Dashbar" type="ProgressBar" parent="CanvasLayer/UI" unique_id=989324243]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 0
+offset_left = 9.0
+offset_top = 59.0
+offset_right = 173.0
+offset_bottom = 99.0
+show_percentage = false
+
+[node name="PauseMenu" type="CanvasLayer" parent="CanvasLayer" unique_id=175287626]
+process_mode = 3
+script = ExtResource("19_nfivy")
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/PauseMenu" unique_id=607273395]
+offset_right = 1148.0
+offset_bottom = 652.0
+color = Color(0.31431612, 0.31431612, 0.3143161, 1)
+
+[node name="Label" type="Label" parent="CanvasLayer/PauseMenu" unique_id=1120938782]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -167.0
+offset_top = -248.0
+offset_right = 163.0
+offset_bottom = -83.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("10_ft6cd")
+theme_override_font_sizes/font_size = 165
+text = "PAUSE"
+
+[node name="resume" type="Button" parent="CanvasLayer/PauseMenu" unique_id=1100368850]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -42.5
+offset_top = -20.5
+offset_right = 42.5
+offset_bottom = 20.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("10_ft6cd")
+theme_override_font_sizes/font_size = 32
+text = "RESUME"
+
+[node name="restart" type="Button" parent="CanvasLayer/PauseMenu" unique_id=1273878842]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -47.0
+offset_top = 27.0
+offset_right = 51.0
+offset_bottom = 68.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("10_ft6cd")
+theme_override_font_sizes/font_size = 32
+text = "RESTART"
+
+[node name="main menu" type="Button" parent="CanvasLayer/PauseMenu" unique_id=1434364373]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -75.0
+offset_top = 72.0
+offset_right = 84.0
+offset_bottom = 123.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("10_ft6cd")
+theme_override_font_sizes/font_size = 42
+text = "MAIN MENU"
 
 [connection signal="timeout" from="PuzzleTimer" to="." method="_on_puzzle_timer_timeout"]
 [connection signal="body_entered" from="Room1Area" to="." method="_on_room_1_area_body_entered"]
@@ -534,3 +639,6 @@ offset_bottom = 40.0
 [connection signal="body_entered" from="Door_Keycard_To_Generator/Area2D" to="Door_Keycard_To_Generator" method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="Door_Generator_To_Simon/Area2D" to="Door_Generator_To_Simon" method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="Door_Simon_To_Sample/Area2D" to="Door_Simon_To_Sample" method="_on_area_2d_body_entered"]
+[connection signal="pressed" from="CanvasLayer/PauseMenu/resume" to="CanvasLayer/PauseMenu" method="_on_resume_pressed"]
+[connection signal="pressed" from="CanvasLayer/PauseMenu/restart" to="CanvasLayer/PauseMenu" method="_on_restart_pressed"]
+[connection signal="pressed" from="CanvasLayer/PauseMenu/main menu" to="CanvasLayer/PauseMenu" method="_on_main_menu_pressed"]

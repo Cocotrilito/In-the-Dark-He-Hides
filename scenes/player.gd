@@ -24,7 +24,7 @@ func _process(delta):
 	var ratio = battery / max_battery
 	if ratio <= 0.15:
 		battery_bar.modulate = Color(1, 0.2, 0.2)
-		battery_bar.modulate.a = 0.6 + sin(Time.get_ticks_msec() * 0.015) * 0.3
+		battery_bar.modulate.a = 0.6+ sin(Time.get_ticks_msec() * 0.015) * 0.3
 	elif ratio <= 0.25:
 		battery_bar.modulate = Color(1, 0.6, 0.2)
 		battery_bar.modulate.a = 1.0
@@ -44,6 +44,17 @@ func _process(delta):
 			flashlight.energy = 0.6
 		else:
 			flashlight.energy = 1.0
+	#dash separado de la bateria
+	var dash_bar = $"../CanvasLayer/UI/Dashbar"
+	dash_bar.max_value = fear_cooldown
+	dash_bar.value = fear_cooldown - cooldown_timer
+	var ratio_dash = dash_bar.value / dash_bar.max_value
+	if ratio_dash <= 0.2:
+		dash_bar.modulate = Color(0.5, 0.5, 0.5)
+	elif ratio_dash < 1.0:
+		dash_bar.modulate = Color(0.7, 0.4, 1.0)
+	else:
+		dash_bar.modulate = Color(1.0, 0.6, 1.0)
 		
 func _input(event):
 	if Input.is_action_just_pressed("flashlight") and battery > 0:

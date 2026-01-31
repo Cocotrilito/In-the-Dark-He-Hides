@@ -53,6 +53,7 @@ func puzzle_succes():
 	print("KEYCARD OBTAINED")
 	taken = true
 	puzzle_active = false
+	$Hint.visible = false
 	$Sprite2D.visible = false
 	$Label.visible = false
 	

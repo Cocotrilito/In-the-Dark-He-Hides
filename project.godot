@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="In the Dark He Hides"
-run/main_scene="uid://bddw6cluyjs2f"
+run/main_scene="uid://cdxrva107nuuy"
 config/features=PackedStringArray("4.6", "Mobile")
 config/icon="res://icon.svg"
 
