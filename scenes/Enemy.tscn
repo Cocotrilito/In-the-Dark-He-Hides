@@ -76,7 +76,7 @@ animations = [{
 radius = 35.014282
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mpr68"]
-radius = 88.0
+radius = 64.00781
 
 [node name="Enemy" type="CharacterBody2D" unique_id=533567540]
 collision_layer = 2
@@ -87,7 +87,7 @@ texture_filter = 1
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_1gqeq")
 animation = &"chase_dark"
-frame_progress = 0.17112978
+frame_progress = 0.38103485
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=253114326]
 shape = SubResource("CircleShape2D_55jtl")

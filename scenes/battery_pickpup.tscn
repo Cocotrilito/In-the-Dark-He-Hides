@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bfjytvecuwyoo"]
 
 [ext_resource type="Script" uid="uid://c0b5pccqncc43" path="res://battery_pickpup.gd" id="1_wwqs4"]
-[ext_resource type="Texture2D" uid="uid://b2ef306flugea" path="res://icon.svg" id="2_id7kl"]
+[ext_resource type="Texture2D" uid="uid://dvjwsysonp3fp" path="res://sprites/Battery.png" id="2_wwqs4"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t0a33"]
 radius = 55.0
@@ -11,7 +11,10 @@ height = 176.0
 script = ExtResource("1_wwqs4")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1164406921]
-texture = ExtResource("2_id7kl")
+texture_filter = 1
+position = Vector2(9, -25)
+scale = Vector2(4, 4)
+texture = ExtResource("2_wwqs4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=652872555]
 shape = SubResource("CapsuleShape2D_t0a33")

@@ -7,18 +7,24 @@
 [ext_resource type="PackedScene" uid="uid://coonvwrx4yhgd" path="res://scenes/Enemy.tscn" id="4_rarhs"]
 [ext_resource type="Script" uid="uid://brr6y2rgg2oku" path="res://scenes/keycard.gd" id="5_c01mt"]
 [ext_resource type="Script" uid="uid://mbesqttayco" path="res://scenes/generator.gd" id="5_nxtc6"]
-[ext_resource type="Texture2D" uid="uid://b2ef306flugea" path="res://icon.svg" id="6_nxtc6"]
 [ext_resource type="Texture2D" uid="uid://bp277nagjdsj7" path="res://sprites/Tileset32x32withfloor .png" id="7_cvmbd"]
+[ext_resource type="Texture2D" uid="uid://cnplooj0r142m" path="res://sprites/keycard.png" id="8_1iba3"]
 [ext_resource type="Script" uid="uid://di51ws4dnbjs0" path="res://scenes/sample.gd" id="8_jlsqs"]
 [ext_resource type="Script" uid="uid://ch5m6s330l5n1" path="res://scenes/hint.gd" id="9_bb450"]
 [ext_resource type="Script" uid="uid://bxpupxntaofq8" path="res://scenes/simon_panel.gd" id="9_q8u5g"]
 [ext_resource type="FontFile" uid="uid://cbnfihl2xpd8b" path="res://sprites/VT323-Regular.ttf" id="10_ft6cd"]
 [ext_resource type="Script" uid="uid://bsv66wx21wul6" path="res://scenes/door_keycard_to_generator.gd" id="10_lhr70"]
 [ext_resource type="Script" uid="uid://c1uxuodjyivpa" path="res://scenes/exit_area.gd" id="10_qmy6f"]
+[ext_resource type="Texture2D" uid="uid://cgwlecje3xvqj" path="res://sprites/Hint key.png" id="11_yxlcp"]
 [ext_resource type="Script" uid="uid://cxvhpnrsuohpg" path="res://scenes/door_generator_to_simon.gd" id="12_bjd11"]
 [ext_resource type="Script" uid="uid://dnxnw5h5r1qhi" path="res://scenes/door_simon_to_sample.gd" id="13_qmy6f"]
+[ext_resource type="Texture2D" uid="uid://tuxm1ted5gw7" path="res://sprites/Generator.png" id="13_yxlcp"]
+[ext_resource type="Texture2D" uid="uid://bxhrb2dxt7jcb" path="res://sprites/Sample.png" id="15_xa025"]
 [ext_resource type="PackedScene" uid="uid://bfjytvecuwyoo" path="res://scenes/battery_pickpup.tscn" id="16_cvmbd"]
+[ext_resource type="Texture2D" uid="uid://j5bj7v1mfe05" path="res://sprites/Light1.png" id="17_ebg2g"]
+[ext_resource type="Texture2D" uid="uid://bh5d56csicira" path="res://sprites/sIMONHINt.png" id="18_2ofn6"]
 [ext_resource type="Script" uid="uid://63ma3tkxmku5" path="res://scenes/pause_menu.gd" id="19_nfivy"]
+[ext_resource type="Texture2D" uid="uid://78n6f5abnelp" path="res://sprites/Door.png" id="21_xa025"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_3p2gp"]
 vertices = PackedVector2Array(16, 16, -16, 16, -16, -16, 16, -16)
@@ -234,7 +240,7 @@ size = Vector2(131, 129)
 size = Vector2(1089, 572.5)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_q8u5g"]
-radius = 14.450992
+radius = 2.370133
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nxtc6"]
 size = Vector2(1081, 573)
@@ -317,8 +323,10 @@ position = Vector2(-570, -319)
 script = ExtResource("5_c01mt")
 
 [node name="Sprite2D" type="Sprite2D" parent="Room1Area/Keycard" unique_id=315822896]
+texture_filter = 1
 position = Vector2(572, 322)
-texture = ExtResource("6_nxtc6")
+scale = Vector2(8, 8)
+texture = ExtResource("8_1iba3")
 
 [node name="Area2D" type="Area2D" parent="Room1Area/Keycard/Sprite2D" unique_id=2051886138]
 
@@ -327,10 +335,10 @@ position = Vector2(-0.5, 0.5)
 shape = SubResource("RectangleShape2D_q8u5g")
 
 [node name="Label" type="Label" parent="Room1Area/Keycard" unique_id=639399446]
-offset_left = 531.0
-offset_top = 335.0
-offset_right = 626.0
-offset_bottom = 368.0
+offset_left = 651.0
+offset_top = 304.0
+offset_right = 746.0
+offset_bottom = 337.0
 theme_override_fonts/font = ExtResource("10_ft6cd")
 theme_override_font_sizes/font_size = 32
 text = "PRESS E"
@@ -340,9 +348,10 @@ position = Vector2(575, 190)
 script = ExtResource("9_bb450")
 
 [node name="Sprite2D" type="Sprite2D" parent="Room1Area/Keycard/Hint" unique_id=841197595]
-position = Vector2(0.9999924, 233)
-scale = Vector2(2.046875, 0.359375)
-texture = ExtResource("6_nxtc6")
+texture_filter = 1
+position = Vector2(-3.000012, 237.00002)
+scale = Vector2(3.338, 3)
+texture = ExtResource("11_yxlcp")
 
 [node name="Room2Area" type="Area2D" parent="." unique_id=538328265]
 position = Vector2(568, 995)
@@ -356,8 +365,10 @@ position = Vector2(-463, 234)
 script = ExtResource("5_nxtc6")
 
 [node name="Sprite2D" type="Sprite2D" parent="Room2Area/Generator" unique_id=1877695989]
+texture_filter = 1
 position = Vector2(2, -2)
-texture = ExtResource("6_nxtc6")
+scale = Vector2(7, 7)
+texture = ExtResource("13_yxlcp")
 
 [node name="Area2D" type="Area2D" parent="Room2Area/Generator" unique_id=2067938173]
 position = Vector2(-465, 223)
@@ -391,7 +402,8 @@ position = Vector2(-225, -189)
 script = ExtResource("8_jlsqs")
 
 [node name="Sprite2D" type="Sprite2D" parent="Room3Area/Sample" unique_id=227457682]
-texture = ExtResource("6_nxtc6")
+scale = Vector2(3.29, 3.29)
+texture = ExtResource("15_xa025")
 
 [node name="Area2D" type="Area2D" parent="Room3Area/Sample/Sprite2D" unique_id=36578604]
 
@@ -419,23 +431,26 @@ shape = SubResource("RectangleShape2D_nxtc6")
 [node name="SimonPanel" type="Node2D" parent="Room 4Area" unique_id=1812468053]
 position = Vector2(79, 206)
 script = ExtResource("9_q8u5g")
-metadata/_edit_group_ = true
 
 [node name="RedLight" type="Sprite2D" parent="Room 4Area/SimonPanel" unique_id=1088392193]
-position = Vector2(174, 108)
-texture = ExtResource("6_nxtc6")
+position = Vector2(177, 175)
+scale = Vector2(7, 7)
+texture = ExtResource("17_ebg2g")
 
 [node name="BlueLight" type="Sprite2D" parent="Room 4Area/SimonPanel" unique_id=1930666255]
-position = Vector2(21, 110)
-texture = ExtResource("6_nxtc6")
+position = Vector2(23, 172)
+scale = Vector2(7, 7)
+texture = ExtResource("17_ebg2g")
 
 [node name="GreenLight" type="Sprite2D" parent="Room 4Area/SimonPanel" unique_id=875134915]
-position = Vector2(-134, 112)
-texture = ExtResource("6_nxtc6")
+position = Vector2(-133, 174)
+scale = Vector2(7, 7)
+texture = ExtResource("17_ebg2g")
 
 [node name="YellowLight" type="Sprite2D" parent="Room 4Area/SimonPanel" unique_id=1805436164]
-position = Vector2(-285, 112)
-texture = ExtResource("6_nxtc6")
+position = Vector2(-288, 173)
+scale = Vector2(7, 7)
+texture = ExtResource("17_ebg2g")
 
 [node name="Area2D" type="Area2D" parent="Room 4Area/SimonPanel" unique_id=245763839]
 position = Vector2(-56, 114)
@@ -443,11 +458,12 @@ position = Vector2(-56, 114)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Room 4Area/SimonPanel/Area2D" unique_id=789114350]
 position = Vector2(-17, -99.5)
 shape = SubResource("RectangleShape2D_wp0k4")
+metadata/_edit_lock_ = true
 
 [node name="HintSprite" type="Sprite2D" parent="Room 4Area/SimonPanel" unique_id=159828200]
-position = Vector2(-55, 206.99998)
-scale = Vector2(1.6015625, 0.328125)
-texture = ExtResource("6_nxtc6")
+position = Vector2(-58.000004, 247.99998)
+scale = Vector2(4.265625, 3)
+texture = ExtResource("18_2ofn6")
 
 [node name="ExitArea" type="Area2D" parent="." unique_id=765273861]
 position = Vector2(1342, 1396)
@@ -460,19 +476,20 @@ shape = SubResource("RectangleShape2D_jlsqs")
 [node name="Door_Keycard_To_Generator" type="StaticBody2D" parent="." unique_id=1267337188]
 position = Vector2(1145, 1025)
 script = ExtResource("10_lhr70")
-metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Door_Keycard_To_Generator" unique_id=110685630]
-position = Vector2(0, 16.999996)
-scale = Vector2(0.4335938, 2.2265625)
-texture = ExtResource("6_nxtc6")
+position = Vector2(-11.999991, 29.000017)
+scale = Vector2(7.031249, 6.0625014)
+texture = ExtResource("21_xa025")
 
 [node name="Blocker" type="CollisionShape2D" parent="Door_Keycard_To_Generator" unique_id=1447639550]
 position = Vector2(-8, 13)
 shape = SubResource("RectangleShape2D_bjd11")
+metadata/_edit_lock_ = true
 
 [node name="Area2D" type="Area2D" parent="Door_Keycard_To_Generator" unique_id=1282312087]
 position = Vector2(3, 18)
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Door_Keycard_To_Generator/Area2D" unique_id=1867153491]
 shape = SubResource("CapsuleShape2D_qmy6f")
@@ -482,18 +499,18 @@ position = Vector2(1546, 982)
 script = ExtResource("12_bjd11")
 
 [node name="Sprite2D" type="Sprite2D" parent="Door_Generator_To_Simon" unique_id=557948797]
-position = Vector2(-4.500021, 2.9999955)
-scale = Vector2(0.33593783, 2.296875)
-texture = ExtResource("6_nxtc6")
+position = Vector2(1, 76)
+scale = Vector2(6.063, 6.063)
+texture = ExtResource("21_xa025")
 
 [node name="Blocker" type="CollisionShape2D" parent="Door_Generator_To_Simon" unique_id=1816202750]
-position = Vector2(2, 0)
+position = Vector2(1, 72)
 shape = SubResource("RectangleShape2D_qmy6f")
 
 [node name="Area2D" type="Area2D" parent="Door_Generator_To_Simon" unique_id=515691928]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Door_Generator_To_Simon/Area2D" unique_id=1921180053]
-position = Vector2(-14, 4)
+position = Vector2(-17, 73)
 shape = SubResource("RectangleShape2D_mwfav")
 
 [node name="Door_Simon_To_Sample" type="StaticBody2D" parent="." unique_id=1654670256]
@@ -501,9 +518,9 @@ position = Vector2(1541, 337)
 script = ExtResource("13_qmy6f")
 
 [node name="Sprite2D" type="Sprite2D" parent="Door_Simon_To_Sample" unique_id=1105571492]
-position = Vector2(-0.49998474, -9.500004)
-scale = Vector2(0.30468726, 2.2578125)
-texture = ExtResource("6_nxtc6")
+position = Vector2(6.0000153, -50.000004)
+scale = Vector2(7.031, 6.063)
+texture = ExtResource("21_xa025")
 
 [node name="Blocker" type="CollisionShape2D" parent="Door_Simon_To_Sample" unique_id=1216637598]
 position = Vector2(0, -10)

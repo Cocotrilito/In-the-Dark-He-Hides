@@ -206,7 +206,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g2els"]
-size = Vector2(128, 127)
+size = Vector2(90, 127)
 
 [node name="Player" type="CharacterBody2D" unique_id=354997750]
 position = Vector2(217, 157)
@@ -218,10 +218,10 @@ texture_filter = 1
 scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_smehm")
 animation = &"walk_side"
-frame_progress = 0.9247885
+frame_progress = 0.16355217
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=190662540]
-position = Vector2(0, -0.5)
+position = Vector2(-10, -0.5)
 shape = SubResource("RectangleShape2D_g2els")
 
 [node name="Flashlight" type="Node2D" parent="." unique_id=829503757]
