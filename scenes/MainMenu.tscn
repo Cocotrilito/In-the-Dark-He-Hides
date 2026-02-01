@@ -2,6 +2,17 @@
 
 [ext_resource type="Script" uid="uid://c5ryi1el2tb01" path="res://scenes/main_menu.gd" id="1_0ykhv"]
 [ext_resource type="FontFile" uid="uid://cbnfihl2xpd8b" path="res://sprites/VT323-Regular.ttf" id="2_2wh52"]
+[ext_resource type="Shader" uid="uid://bcwqg6dauopil" path="res://gbaspawn.gdshader" id="2_ow34m"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_l72w3"]
+shader = ExtResource("2_ow34m")
+shader_parameter/pixel_size = 2.0
+shader_parameter/color_levels = 5.0
+shader_parameter/darkness = 0.35
+shader_parameter/vignette_strength = 0.45
+shader_parameter/vignette_softness = 0.6
+shader_parameter/scanline_strength = 0.12
+shader_parameter/scanline_density = 600.0
 
 [node name="MainMenu" type="Control" unique_id=975058764]
 layout_mode = 3
@@ -11,6 +22,7 @@ offset_bottom = 645.0
 script = ExtResource("1_0ykhv")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=844882097]
+material = SubResource("ShaderMaterial_l72w3")
 layout_mode = 0
 offset_left = 2.0
 offset_top = 6.0
