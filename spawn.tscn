@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://mcqcxc4lcyb6" path="res://node_2d.gd" id="7_0owry"]
 [ext_resource type="PackedScene" uid="uid://bmutk1nlp4c3q" path="res://phone.tscn" id="9_1u0rm"]
 [ext_resource type="FontFile" uid="uid://cbnfihl2xpd8b" path="res://sprites/VT323-Regular.ttf" id="9_4yavu"]
+[ext_resource type="Shader" uid="uid://ij4cpkh1tuei" path="res://spawn.gdshader" id="11_vstme"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ewd04"]
 texture = ExtResource("1_yqulk")
@@ -121,6 +122,12 @@ sources/0 = SubResource("TileSetAtlasSource_7f57q")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0owry"]
 size = Vector2(34, 191)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a47qk"]
+shader = ExtResource("11_vstme")
+shader_parameter/vignette_strength = 0.9
+shader_parameter/flicker_strength = 0.04
+shader_parameter/flicker_speed = 2.5
+
 [node name="Spawn" type="Node" unique_id=764493277]
 script = ExtResource("1_2peku")
 
@@ -180,5 +187,14 @@ rotation = -1.5620421
 theme_override_fonts/font = ExtResource("9_4yavu")
 theme_override_font_sizes/font_size = 32
 text = "PRESS [F] TO TURN ON THE FLASHLIGHT"
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="." unique_id=914310137]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer2" unique_id=905706514]
+material = SubResource("ShaderMaterial_a47qk")
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+metadata/_edit_use_anchors_ = true
 
 [connection signal="body_entered" from="door_spawn_to_main" to="door_spawn_to_main" method="_on_body_entered"]

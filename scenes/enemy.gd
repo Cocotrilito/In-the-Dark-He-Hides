@@ -9,7 +9,9 @@ extends CharacterBody2D
 @onready var agent: NavigationAgent2D = $NavigationAgent2D
 @onready var sprite: AnimatedSprite2D = $Sprite2D
 @onready var footsteps = $FootstepsEnemy
-
+@onready var tension_mgr = get_node("../TensionManager")
+@export var base_speed = 350
+@export var high_tension_speed = 420
 
 
 
@@ -36,9 +38,19 @@ func play_anim(name: String):
 
 
 func _physics_process(delta):
+	var current_speed = base_speed
+	if TensionManager.tension > 0.8:
+		current_speed = high_tension_speed
+	TensionManager.add(0.15 * delta)
 	if player == null:
 		print("NO PLAYER")
 		return
+	if tension_mgr and tension_mgr.tension > 0.8:
+		speed = 420
+		print("Tension:", tension_mgr.tension,"speed:", speed)
+	else:
+		speed = 350
+	
 	agent.target_position = player.global_position
 	if agent.is_navigation_finished():
 		return
@@ -67,7 +79,7 @@ func _physics_process(delta):
 		velocity = Vector2.ZERO
 	else:
 		play_anim("chase_dark")
-		velocity  = dir * speed
+		velocity  = dir * current_speed
 	move_and_slide()
 	var is_moving = velocity.length() > 10
 	if is_moving and calm_timer <= 0:

@@ -25,6 +25,8 @@
 [ext_resource type="Texture2D" uid="uid://bh5d56csicira" path="res://sprites/sIMONHINt.png" id="18_2ofn6"]
 [ext_resource type="Script" uid="uid://63ma3tkxmku5" path="res://scenes/pause_menu.gd" id="19_nfivy"]
 [ext_resource type="Texture2D" uid="uid://78n6f5abnelp" path="res://sprites/Door.png" id="21_xa025"]
+[ext_resource type="Shader" uid="uid://dn8xkgd4shpvy" path="res://scenes/Main.gdshader" id="26_36rkl"]
+[ext_resource type="Script" uid="uid://cs6bgx8emvdak" path="res://scenes/TensionManager.gd" id="27_fs0b5"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_3p2gp"]
 vertices = PackedVector2Array(16, 16, -16, 16, -16, -16, 16, -16)
@@ -269,6 +271,12 @@ size = Vector2(40, 290)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cvmbd"]
 size = Vector2(26, 312)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fs0b5"]
+shader = ExtResource("26_36rkl")
+shader_parameter/vignette_strength = 0.9
+shader_parameter/flicker_strength = 0.04
+shader_parameter/flicker_speed = 2.0
 
 [node name="Main" type="Node" unique_id=754798034]
 script = ExtResource("1_rarhs")
@@ -637,6 +645,17 @@ grow_vertical = 2
 theme_override_fonts/font = ExtResource("10_ft6cd")
 theme_override_font_sizes/font_size = 42
 text = "MAIN MENU"
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="." unique_id=478237681]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer2" unique_id=262784495]
+material = SubResource("ShaderMaterial_fs0b5")
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+
+[node name="TensionManager" type="Node2D" parent="." unique_id=1412307556]
+script = ExtResource("27_fs0b5")
 
 [connection signal="timeout" from="PuzzleTimer" to="." method="_on_puzzle_timer_timeout"]
 [connection signal="body_entered" from="Room1Area" to="." method="_on_room_1_area_body_entered"]

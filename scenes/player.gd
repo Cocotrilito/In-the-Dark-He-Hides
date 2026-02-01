@@ -12,7 +12,7 @@ var base_speed = 400.0
 @onready var battery_bar = get_node_or_null("../CanvasLayer/UI/BatteryBar")
 @onready var dash_bar = get_node_or_null("../CanvasLayer/UI/Dashbar")
 @onready var footsteps = $Footsteps
-
+@onready var tension_mgr = get_node("../TensionManager")
 
 var last_direction = "down"
 var battery = max_battery
@@ -22,7 +22,12 @@ var is_afraid = false
 var fear_timer = 0.0
 
 func _process(delta):
+	if not flashlight_on:
+		TensionManager.add(0.05 * delta)
 	rotate_flashlight()
+	if tension_mgr:
+		var t = tension_mgr.tension
+		
 	
 	if battery_bar:
 		battery_bar.value = battery
@@ -49,6 +54,8 @@ func _process(delta):
 			flashlight.energy = 0.6
 		else:
 			flashlight.energy = 1.0
+	
+		
 	#dash separado de la bateria
 	if dash_bar:
 		dash_bar.max_value = fear_cooldown

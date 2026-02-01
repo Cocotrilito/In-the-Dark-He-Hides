@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 GameState="*uid://2sq1ateipm4b"
 AudioManager="*uid://fu3dvepo2rwp"
+TensionManager="*uid://cs6bgx8emvdak"
 
 [editor_plugins]
 
