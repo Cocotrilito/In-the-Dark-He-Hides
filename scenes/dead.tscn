@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://cyq75t1s4to4i" path="res://dead.gd" id="1_4orh1"]
 [ext_resource type="FontFile" uid="uid://cbnfihl2xpd8b" path="res://sprites/VT323-Regular.ttf" id="2_tnkcu"]
 
-[node name="Control" type="Control" unique_id=794230787]
+[node name="GameOver" type="Control" unique_id=794230787]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1154.0

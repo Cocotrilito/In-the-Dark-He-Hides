@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://c5ryi1el2tb01" path="res://scenes/main_menu.gd" id="1_0ykhv"]
 [ext_resource type="FontFile" uid="uid://cbnfihl2xpd8b" path="res://sprites/VT323-Regular.ttf" id="2_2wh52"]
 
-[node name="Control" type="Control" unique_id=975058764]
+[node name="MainMenu" type="Control" unique_id=975058764]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1159.0
