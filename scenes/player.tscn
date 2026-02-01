@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://u8oaapwqrtwd" path="res://sprites/SpriteSheetMa2.png" id="2_qhqgy"]
 [ext_resource type="Texture2D" uid="uid://cmibx6d6cuwns" path="res://sprites/wewewewe.jpg" id="3_qhqgy"]
 [ext_resource type="AudioStream" uid="uid://c53w311v14vty" path="res://FX/footsteps_player.wav" id="4_dqkch"]
+[ext_resource type="Script" uid="uid://cs0b3ju3aefhm" path="res://scenes/camera_2d.gd" id="4_qlg0r"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dqkch"]
 atlas = ExtResource("2_qhqgy")
@@ -207,7 +208,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g2els"]
-size = Vector2(90, 127)
+size = Vector2(90, 58)
 
 [node name="Player" type="CharacterBody2D" unique_id=354997750]
 position = Vector2(217, 157)
@@ -222,7 +223,7 @@ animation = &"walk_side"
 frame_progress = 0.92096907
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=190662540]
-position = Vector2(-10, -0.5)
+position = Vector2(-10, 34)
 shape = SubResource("RectangleShape2D_g2els")
 
 [node name="Flashlight" type="Node2D" parent="." unique_id=829503757]
@@ -243,6 +244,7 @@ position = Vector2(-1.4250565, -7.6293945e-06)
 polygon = PackedVector2Array(0.71250916, 0, -91.20285, 188.92068, 98.328094, 188.92068)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=647797553]
+script = ExtResource("4_qlg0r")
 
 [node name="Footsteps" type="AudioStreamPlayer2D" parent="." unique_id=206245548]
 stream = ExtResource("4_dqkch")

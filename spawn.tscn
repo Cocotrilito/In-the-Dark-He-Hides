@@ -142,9 +142,6 @@ scale = Vector2(6, 6)
 tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAAFAAAAAAACAAAAAAABAAAAAAABAAAAAAACAAAAAAABAAAAAAADAAAAAAABAAAAAAAEAAAAAAABAAAAAAAFAAMAAAACAAEAAAAAAAQAAAAAAAIAAAABAAQAAAABAAIAAAACAAQAAAABAAIAAAADAAQAAAABAAIAAAAEAAQAAAABAAIAAAAFAAQAAAACAAIAAAAFAAIAAAACAAQAAAAFAAEAAAACAAEAAAAAAAMAAAAAAAMAAAAAAAEAAAAAAAMAACA=")
 tile_set = SubResource("TileSet_0owry")
 
-[node name="Player" parent="." unique_id=354997750 instance=ExtResource("3_g4g62")]
-position = Vector2(1065, 433)
-
 [node name="door_spawn_to_main" type="Area2D" parent="." unique_id=280856628]
 position = Vector2(13, 480)
 script = ExtResource("4_utm62")
@@ -178,6 +175,9 @@ position = Vector2(0, -2)
 
 [node name="Phone" parent="." unique_id=1863837044 instance=ExtResource("9_1u0rm")]
 position = Vector2(854, 161)
+
+[node name="Player" parent="." unique_id=354997750 instance=ExtResource("3_g4g62")]
+position = Vector2(1081, 694)
 
 [node name="Label" type="Label" parent="." unique_id=644964629]
 offset_left = 129.99998

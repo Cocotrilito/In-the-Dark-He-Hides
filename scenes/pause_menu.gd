@@ -1,5 +1,5 @@
 extends CanvasLayer
-
+@onready var ui: Control = $"../UI"
 
 
 

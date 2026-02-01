@@ -6,8 +6,11 @@
 [ext_resource type="AudioStream" uid="uid://dykb2qf6vyxa6" path="res://FX/phone_ring2.wav" id="3_tpglx"]
 [ext_resource type="AudioStream" uid="uid://dyafxe3qs5uv7" path="res://FX/phone_call.wav" id="4_idgle"]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_17gxr"]
+height = 22.333336
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tpglx"]
-size = Vector2(305, 95.875)
+size = Vector2(305, 139.9375)
 
 [node name="Phone" type="Node2D" unique_id=1863837044]
 script = ExtResource("1_0e3g3")
@@ -16,10 +19,16 @@ script = ExtResource("1_0e3g3")
 scale = Vector2(6, 6)
 texture = ExtResource("2_hfnv5")
 
+[node name="StaticBody2D" type="StaticBody2D" parent="Sprite2D" unique_id=114978382]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/StaticBody2D" unique_id=1827097152]
+position = Vector2(-0.16666667, 2.6666665)
+shape = SubResource("CapsuleShape2D_17gxr")
+
 [node name="Area2D" type="Area2D" parent="." unique_id=388026300]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=346449037]
-position = Vector2(0, 45)
+position = Vector2(0, 67.03125)
 shape = SubResource("RectangleShape2D_tpglx")
 
 [node name="ring" type="AudioStreamPlayer2D" parent="." unique_id=993641980]

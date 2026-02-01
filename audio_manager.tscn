@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://ch4g2dvy8n8cw" path="res://AudioManager.gd" id="1_bq1v2"]
 [ext_resource type="AudioStream" uid="uid://br3h8wggh2i7m" path="res://FX/music_ambient.wav" id="1_jisk1"]
 [ext_resource type="AudioStream" uid="uid://bb3wjc4rhwhbx" path="res://FX/rain2.wav" id="3_6jj5d"]
+[ext_resource type="AudioStream" uid="uid://l8tw1rqlcvh" path="res://FX/heartbeat.wav" id="4_5olve"]
 
 [node name="AudioManager" type="Node" unique_id=732833145]
 script = ExtResource("1_bq1v2")
@@ -13,3 +14,7 @@ stream = ExtResource("1_jisk1")
 [node name="Rain" type="AudioStreamPlayer" parent="." unique_id=262679077]
 stream = ExtResource("3_6jj5d")
 volume_db = -17.0
+
+[node name="Heartbeat" type="AudioStreamPlayer" parent="." unique_id=1094747368]
+stream = ExtResource("4_5olve")
+volume_db = 24.0
