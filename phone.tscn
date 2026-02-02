@@ -6,8 +6,8 @@
 [ext_resource type="AudioStream" uid="uid://dykb2qf6vyxa6" path="res://FX/phone_ring2.wav" id="3_tpglx"]
 [ext_resource type="AudioStream" uid="uid://dyafxe3qs5uv7" path="res://FX/phone_call.wav" id="4_idgle"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_17gxr"]
-height = 22.333336
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_17gxr"]
+size = Vector2(20, 14.666667)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tpglx"]
 size = Vector2(305, 139.9375)
@@ -22,8 +22,8 @@ texture = ExtResource("2_hfnv5")
 [node name="StaticBody2D" type="StaticBody2D" parent="Sprite2D" unique_id=114978382]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/StaticBody2D" unique_id=1827097152]
-position = Vector2(-0.16666667, 2.6666665)
-shape = SubResource("CapsuleShape2D_17gxr")
+position = Vector2(-0.16666667, -1.8333334)
+shape = SubResource("RectangleShape2D_17gxr")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=388026300]
 
@@ -40,10 +40,10 @@ stream = ExtResource("4_idgle")
 volume_db = 2.51
 
 [node name="Label" type="Label" parent="." unique_id=1445939127]
-offset_left = -50.0
-offset_top = -93.0
-offset_right = 53.0
-offset_bottom = -60.0
+offset_left = -49.0
+offset_top = -89.0
+offset_right = 54.0
+offset_bottom = -56.0
 theme_override_fonts/font = ExtResource("3_17gxr")
 theme_override_font_sizes/font_size = 32
 text = "Answer E"
