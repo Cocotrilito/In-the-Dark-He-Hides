@@ -12,7 +12,9 @@ var base_speed = 400.0
 @onready var battery_bar = get_node_or_null("../CanvasLayer/UI/BatteryBar")
 @onready var dash_bar = get_node_or_null("../CanvasLayer/UI/Dashbar")
 @onready var footsteps = $Footsteps
-@onready var tension_mgr = get_node("../TensionManager")
+@onready var tension_mgr = get_tree().get_first_node_in_group("tension")
+@onready var cam = $Camera2D
+
 
 var last_direction = "down"
 var battery = max_battery
@@ -47,7 +49,13 @@ func _process(delta):
 			battery = 0
 			set_flashlight(false)
 			return
-		
+		if tension_mgr:
+			var t = tension_mgr.tension
+			flashlight.energy = lerp(1.0, 0.5, t)
+			flashlight.texture_scale = lerp(1.0, 0.85, t)
+		else:
+			flashlight.energy = 1.0
+			flashlight.texture_scale = 1.0
 		if battery < max_battery * 0.15:
 			flashlight.energy = 0.4 + sin(Time.get_ticks_msec() * 0.02) * 0.2
 		elif  battery < max_battery * 0.25:
@@ -107,6 +115,10 @@ func _physics_process(delta):
 			is_afraid = true
 			fear_timer = fear_duration
 			cooldown_timer = fear_cooldown
+			
+			var cam = get_node_or_null("Camera2D")
+			if cam:
+				cam.add_shake(cam.sprint_shake)
 		
 	if is_afraid:
 		fear_timer -= delta

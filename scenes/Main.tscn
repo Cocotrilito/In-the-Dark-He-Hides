@@ -25,9 +25,11 @@
 [ext_resource type="Texture2D" uid="uid://bh5d56csicira" path="res://sprites/sIMONHINt.png" id="18_2ofn6"]
 [ext_resource type="Script" uid="uid://63ma3tkxmku5" path="res://scenes/pause_menu.gd" id="19_nfivy"]
 [ext_resource type="Texture2D" uid="uid://78n6f5abnelp" path="res://sprites/Door.png" id="21_xa025"]
+[ext_resource type="Script" uid="uid://bnklv5dwmekmb" path="res://scenes/hud_tension.gd" id="25_e2s0e"]
 [ext_resource type="Shader" uid="uid://dn8xkgd4shpvy" path="res://scenes/Main.gdshader" id="26_36rkl"]
 [ext_resource type="Script" uid="uid://cs6bgx8emvdak" path="res://scenes/TensionManager.gd" id="27_fs0b5"]
 [ext_resource type="Shader" uid="uid://bcwqg6dauopil" path="res://gbaspawn.gdshader" id="28_ma7h6"]
+[ext_resource type="Script" uid="uid://danpfpg7t3rgt" path="res://scenes/shader_controller.gd" id="29_gsxep"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_3p2gp"]
 vertices = PackedVector2Array(16, 16, -16, 16, -16, -16, 16, -16)
@@ -567,6 +569,7 @@ position = Vector2(2574, 852)
 [node name="UI" type="Control" parent="Node2D/CanvasLayer" unique_id=736009602]
 layout_mode = 3
 anchors_preset = 0
+script = ExtResource("25_e2s0e")
 
 [node name="BatteryBar" type="ProgressBar" parent="Node2D/CanvasLayer/UI" unique_id=1118428164]
 custom_minimum_size = Vector2(20, 20)
@@ -672,6 +675,7 @@ mouse_filter = 2
 script = ExtResource("27_fs0b5")
 
 [node name="GBA_Filter" type="CanvasLayer" parent="." unique_id=1118193044]
+script = ExtResource("29_gsxep")
 
 [node name="ColorRect" type="ColorRect" parent="GBA_Filter" unique_id=1894591116]
 material = SubResource("ShaderMaterial_e2s0e")
