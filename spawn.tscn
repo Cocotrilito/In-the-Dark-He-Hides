@@ -13,16 +13,6 @@
 [ext_resource type="Shader" uid="uid://bcwqg6dauopil" path="res://gbaspawn.gdshader" id="11_a47qk"]
 [ext_resource type="Script" uid="uid://bkm8ja74cqc4y" path="res://pause_menu_spawn.gd" id="12_a47qk"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_3mtok"]
-shader = ExtResource("11_a47qk")
-shader_parameter/pixel_size = 2.0
-shader_parameter/color_levels = 5.0
-shader_parameter/darkness = 0.35
-shader_parameter/vignette_strength = 0.9
-shader_parameter/vignette_softness = 0.6
-shader_parameter/scanline_strength = 0.12
-shader_parameter/scanline_density = 600.0
-
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ewd04"]
 texture = ExtResource("1_yqulk")
 texture_region_size = Vector2i(32, 32)
@@ -143,15 +133,18 @@ shader_parameter/vignette_softness = 0.6
 shader_parameter/scanline_strength = 0.12
 shader_parameter/scanline_density = 600.0
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3mtok"]
+shader = ExtResource("11_a47qk")
+shader_parameter/pixel_size = 2.0
+shader_parameter/color_levels = 5.0
+shader_parameter/darkness = 0.35
+shader_parameter/vignette_strength = 0.9
+shader_parameter/vignette_softness = 0.6
+shader_parameter/scanline_strength = 0.12
+shader_parameter/scanline_density = 600.0
+
 [node name="Spawn" type="Node" unique_id=764493277]
 script = ExtResource("1_2peku")
-
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=440907706]
-
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=569449943]
-material = SubResource("ShaderMaterial_3mtok")
-offset_right = 1145.0
-offset_bottom = 967.0
 
 [node name="Node2D2" type="Node2D" parent="." unique_id=842015797]
 
@@ -213,42 +206,49 @@ theme_override_font_sizes/font_size = 32
 text = "PRESS [F] TO TURN ON THE FLASHLIGHT"
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="Node2D2" unique_id=914310137]
-visible = false
+process_mode = 3
 
 [node name="ColorRect" type="ColorRect" parent="Node2D2/CanvasLayer2" unique_id=905706514]
+visible = false
 material = SubResource("ShaderMaterial_a47qk")
 offset_right = 40.0
 offset_bottom = 40.0
 mouse_filter = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="PauseMenuSpawn" type="CanvasLayer" parent="Node2D2" unique_id=822233508]
+[node name="PauseMenuSpawn" type="CanvasLayer" parent="Node2D2/CanvasLayer2" unique_id=822233508]
 process_mode = 3
 visible = false
 script = ExtResource("12_a47qk")
 
-[node name="ColorRect" type="ColorRect" parent="Node2D2/PauseMenuSpawn" unique_id=733515367]
-offset_right = 1148.0
-offset_bottom = 652.0
-color = Color(0.31431612, 0.31431612, 0.3143161, 1)
-
-[node name="Label" type="Label" parent="Node2D2/PauseMenuSpawn" unique_id=1528718525]
+[node name="ColorRect" type="ColorRect" parent="Node2D2/CanvasLayer2/PauseMenuSpawn" unique_id=733515367]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -167.0
-offset_top = -248.0
-offset_right = 163.0
-offset_bottom = -83.0
+offset_left = -574.0
+offset_top = -326.0
+offset_right = 574.0
+offset_bottom = 326.0
 grow_horizontal = 2
 grow_vertical = 2
+color = Color(0.31431612, 0.31431612, 0.3143161, 1)
+
+[node name="Label" type="Label" parent="Node2D2/CanvasLayer2/PauseMenuSpawn" unique_id=1528718525]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -158.0
+offset_top = -34.0
+offset_right = 172.0
+offset_bottom = 131.0
+grow_horizontal = 2
 theme_override_fonts/font = ExtResource("9_4yavu")
-theme_override_font_sizes/font_size = 165
+theme_override_font_sizes/font_size = 160
 text = "PAUSE"
 
-[node name="resume" type="Button" parent="Node2D2/PauseMenuSpawn" unique_id=1143081591]
+[node name="resume" type="Button" parent="Node2D2/CanvasLayer2/PauseMenuSpawn" unique_id=1143081591]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -264,39 +264,50 @@ theme_override_fonts/font = ExtResource("9_4yavu")
 theme_override_font_sizes/font_size = 32
 text = "RESUME"
 
-[node name="restart" type="Button" parent="Node2D2/PauseMenuSpawn" unique_id=460527230]
+[node name="restart" type="Button" parent="Node2D2/CanvasLayer2/PauseMenuSpawn" unique_id=460527230]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -47.0
-offset_top = 27.0
-offset_right = 51.0
-offset_bottom = 68.0
+offset_left = -49.0
+offset_top = 22.0
+offset_right = 49.0
+offset_bottom = 63.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("9_4yavu")
 theme_override_font_sizes/font_size = 32
 text = "RESTART"
 
-[node name="main menu" type="Button" parent="Node2D2/PauseMenuSpawn" unique_id=1303826154]
+[node name="main menu" type="Button" parent="Node2D2/CanvasLayer2/PauseMenuSpawn" unique_id=1303826154]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -75.0
-offset_top = 72.0
-offset_right = 84.0
-offset_bottom = 123.0
+offset_left = -80.0
+offset_top = 65.0
+offset_right = 79.0
+offset_bottom = 116.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("9_4yavu")
 theme_override_font_sizes/font_size = 42
 text = "MAIN MENU"
 
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=440907706]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=569449943]
+material = SubResource("ShaderMaterial_3mtok")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
 [connection signal="body_entered" from="Node2D2/door_spawn_to_main" to="Node2D2/door_spawn_to_main" method="_on_body_entered"]
-[connection signal="pressed" from="Node2D2/PauseMenuSpawn/resume" to="Node2D2/PauseMenuSpawn" method="_on_resume_pressed"]
-[connection signal="pressed" from="Node2D2/PauseMenuSpawn/restart" to="Node2D2/PauseMenuSpawn" method="_on_restart_pressed"]
-[connection signal="pressed" from="Node2D2/PauseMenuSpawn/main menu" to="Node2D2/PauseMenuSpawn" method="_on_main_menu_pressed"]
+[connection signal="pressed" from="Node2D2/CanvasLayer2/PauseMenuSpawn/resume" to="Node2D2/CanvasLayer2/PauseMenuSpawn" method="_on_resume_pressed"]
+[connection signal="pressed" from="Node2D2/CanvasLayer2/PauseMenuSpawn/restart" to="Node2D2/CanvasLayer2/PauseMenuSpawn" method="_on_restart_pressed"]
+[connection signal="pressed" from="Node2D2/CanvasLayer2/PauseMenuSpawn/main menu" to="Node2D2/CanvasLayer2/PauseMenuSpawn" method="_on_main_menu_pressed"]
