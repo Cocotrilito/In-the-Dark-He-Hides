@@ -30,6 +30,7 @@
 [ext_resource type="Script" uid="uid://cs6bgx8emvdak" path="res://scenes/TensionManager.gd" id="27_fs0b5"]
 [ext_resource type="Shader" uid="uid://bcwqg6dauopil" path="res://gbaspawn.gdshader" id="28_ma7h6"]
 [ext_resource type="Script" uid="uid://danpfpg7t3rgt" path="res://scenes/shader_controller.gd" id="29_gsxep"]
+[ext_resource type="Script" uid="uid://dsjriatjd4eg8" path="res://scenes/glitch_controller_main.gd" id="31_v0vrg"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_3p2gp"]
 vertices = PackedVector2Array(16, 16, -16, 16, -16, -16, 16, -16)
@@ -359,12 +360,12 @@ position = Vector2(-0.5, 0.5)
 shape = SubResource("RectangleShape2D_q8u5g")
 
 [node name="Label" type="Label" parent="Node2D/Room1Area/Keycard" unique_id=639399446]
-offset_left = 651.0
-offset_top = 304.0
-offset_right = 746.0
-offset_bottom = 337.0
+offset_left = 639.0
+offset_top = 298.0
+offset_right = 793.0
+offset_bottom = 353.0
 theme_override_fonts/font = ExtResource("10_ft6cd")
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 55
 text = "PRESS E"
 
 [node name="Hint" type="Node2D" parent="Node2D/Room1Area/Keycard" unique_id=1080038801]
@@ -406,12 +407,12 @@ wait_time = 4.0
 one_shot = true
 
 [node name="Label" type="Label" parent="Node2D/Room2Area/Generator" unique_id=724242606]
-offset_left = -37.0
-offset_top = -54.0
-offset_right = 44.0
-offset_bottom = -19.0
+offset_left = -63.0
+offset_top = -114.0
+offset_right = 69.0
+offset_bottom = -59.0
 theme_override_fonts/font = ExtResource("10_ft6cd")
-theme_override_font_sizes/font_size = 34
+theme_override_font_sizes/font_size = 55
 text = "Hold E"
 
 [node name="Room3Area" type="Area2D" parent="Node2D" unique_id=872194794]
@@ -436,13 +437,13 @@ scale = Vector2(6.1600194, 6.799999)
 shape = SubResource("CircleShape2D_q8u5g")
 
 [node name="Label" type="Label" parent="Node2D/Room3Area" unique_id=815931437]
-offset_left = -367.0
-offset_top = -198.0
-offset_right = -277.0
-offset_bottom = -165.0
+offset_left = -434.0
+offset_top = -219.0
+offset_right = -280.0
+offset_bottom = -164.0
 scale = Vector2(1.0850096, 0.98707515)
 theme_override_fonts/font = ExtResource("10_ft6cd")
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 55
 text = "Press E"
 
 [node name="Room 4Area" type="Area2D" parent="Node2D" unique_id=1660351241]
@@ -485,7 +486,7 @@ shape = SubResource("RectangleShape2D_wp0k4")
 metadata/_edit_lock_ = true
 
 [node name="HintSprite" type="Sprite2D" parent="Node2D/Room 4Area/SimonPanel" unique_id=159828200]
-position = Vector2(-58.000004, 247.99998)
+position = Vector2(-78.00001, -106.000015)
 scale = Vector2(4.265625, 3)
 texture = ExtResource("18_2ofn6")
 
@@ -574,23 +575,24 @@ script = ExtResource("25_e2s0e")
 [node name="BatteryBar" type="ProgressBar" parent="Node2D/CanvasLayer/UI" unique_id=1118428164]
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 1
-offset_left = 10.0
-offset_top = 12.0
-offset_right = 174.0
-offset_bottom = 52.0
+offset_left = 8.0
+offset_top = 7.0
+offset_right = 72.0
+offset_bottom = 27.0
 show_percentage = false
 
 [node name="Dashbar" type="ProgressBar" parent="Node2D/CanvasLayer/UI" unique_id=989324243]
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 0
-offset_left = 9.0
-offset_top = 59.0
-offset_right = 173.0
-offset_bottom = 99.0
+offset_left = 8.0
+offset_top = 29.0
+offset_right = 71.0
+offset_bottom = 49.0
 show_percentage = false
 
 [node name="PauseMenu" type="CanvasLayer" parent="Node2D/CanvasLayer" unique_id=175287626]
 process_mode = 3
+visible = false
 script = ExtResource("19_nfivy")
 
 [node name="ColorRect" type="ColorRect" parent="Node2D/CanvasLayer/PauseMenu" unique_id=607273395]
@@ -663,12 +665,16 @@ theme_override_font_sizes/font_size = 42
 text = "MAIN MENU"
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="." unique_id=478237681]
+visible = false
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer2" unique_id=262784495]
 material = SubResource("ShaderMaterial_fs0b5")
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 17.0
+offset_top = 7.0
+offset_right = 57.0
+offset_bottom = 47.0
 mouse_filter = 2
+metadata/_edit_lock_ = true
 
 [node name="TensionManager" type="Node2D" parent="." unique_id=1412307556]
 script = ExtResource("27_fs0b5")
@@ -684,6 +690,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+metadata/_edit_lock_ = true
+
+[node name="GlitchController" type="Node" parent="." unique_id=2001026570]
+script = ExtResource("31_v0vrg")
 
 [connection signal="timeout" from="Node2D/PuzzleTimer" to="." method="_on_puzzle_timer_timeout"]
 [connection signal="body_entered" from="Node2D/Room1Area" to="." method="_on_room_1_area_body_entered"]

@@ -12,6 +12,7 @@
 [ext_resource type="FontFile" uid="uid://cbnfihl2xpd8b" path="res://sprites/VT323-Regular.ttf" id="9_4yavu"]
 [ext_resource type="Shader" uid="uid://bcwqg6dauopil" path="res://gbaspawn.gdshader" id="11_a47qk"]
 [ext_resource type="Script" uid="uid://bkm8ja74cqc4y" path="res://pause_menu_spawn.gd" id="12_a47qk"]
+[ext_resource type="Script" uid="uid://bn18fu02cltba" path="res://glitch_controller_spawn.gd" id="13_3mtok"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ewd04"]
 texture = ExtResource("1_yqulk")
@@ -306,6 +307,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+
+[node name="GlitchController" type="Node" parent="." unique_id=1658891575]
+script = ExtResource("13_3mtok")
 
 [connection signal="body_entered" from="Node2D2/door_spawn_to_main" to="Node2D2/door_spawn_to_main" method="_on_body_entered"]
 [connection signal="pressed" from="Node2D2/CanvasLayer2/PauseMenuSpawn/resume" to="Node2D2/CanvasLayer2/PauseMenuSpawn" method="_on_resume_pressed"]
