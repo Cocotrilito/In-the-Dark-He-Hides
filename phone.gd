@@ -5,6 +5,8 @@ extends Node2D
 @onready var voice: AudioStreamPlayer2D = $voice
 @onready var label: Label = $Label
 @onready var area: Area2D = $Area2D
+@onready var subtitles = $CanvasLayer/SubtitleLabel
+
 
 var can_answer = false
 var answered = false
@@ -25,7 +27,7 @@ func answer_phone():
 	label.visible = false
 	ring.stop()
 	voice.play()
-	
+	subtitles.start_subtitles()
 
 
 func _on_area_2d_body_entered(body):

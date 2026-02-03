@@ -5,6 +5,7 @@
 [ext_resource type="FontFile" uid="uid://cbnfihl2xpd8b" path="res://sprites/VT323-Regular.ttf" id="3_17gxr"]
 [ext_resource type="AudioStream" uid="uid://dykb2qf6vyxa6" path="res://FX/phone_ring2.wav" id="3_tpglx"]
 [ext_resource type="AudioStream" uid="uid://dyafxe3qs5uv7" path="res://FX/phone_call.wav" id="4_idgle"]
+[ext_resource type="Script" uid="uid://dejhimvsxykj3" path="res://SubtitleManager.gd" id="6_tpglx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_17gxr"]
 size = Vector2(20, 14.666667)
@@ -48,6 +49,27 @@ theme_override_fonts/font = ExtResource("3_17gxr")
 theme_override_font_sizes/font_size = 32
 text = "Answer E"
 metadata/_edit_use_anchors_ = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=264651717]
+
+[node name="SubtitleLabel" type="RichTextLabel" parent="CanvasLayer" unique_id=1564744406]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -130.0
+offset_top = -35.0
+offset_right = 130.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/normal_font = ExtResource("3_17gxr")
+theme_override_fonts/bold_font = ExtResource("3_17gxr")
+theme_override_fonts/bold_italics_font = ExtResource("3_17gxr")
+theme_override_fonts/italics_font = ExtResource("3_17gxr")
+theme_override_fonts/mono_font = ExtResource("3_17gxr")
+bbcode_enabled = true
+script = ExtResource("6_tpglx")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

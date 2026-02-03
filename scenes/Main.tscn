@@ -498,6 +498,27 @@ script = ExtResource("10_qmy6f")
 position = Vector2(2.25, 144)
 shape = SubResource("RectangleShape2D_jlsqs")
 
+[node name="ExitHint" type="CanvasLayer" parent="Node2D" unique_id=1185458382]
+
+[node name="Label" type="Label" parent="Node2D/ExitHint" unique_id=1381642077]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -69.0
+offset_top = -66.55
+offset_right = 69.0
+offset_bottom = -17.550003
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("10_ft6cd")
+theme_override_font_sizes/font_size = 16
+text = "I can't leave yet.
+I need the sample"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Door_Keycard_To_Generator" type="StaticBody2D" parent="Node2D" unique_id=1267337188]
 position = Vector2(1145, 1025)
 script = ExtResource("10_lhr70")
@@ -571,6 +592,7 @@ position = Vector2(2574, 852)
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("25_e2s0e")
+metadata/_edit_lock_ = true
 
 [node name="BatteryBar" type="ProgressBar" parent="Node2D/CanvasLayer/UI" unique_id=1118428164]
 custom_minimum_size = Vector2(20, 20)
@@ -580,6 +602,7 @@ offset_top = 7.0
 offset_right = 72.0
 offset_bottom = 27.0
 show_percentage = false
+metadata/_edit_lock_ = true
 
 [node name="Dashbar" type="ProgressBar" parent="Node2D/CanvasLayer/UI" unique_id=989324243]
 custom_minimum_size = Vector2(20, 20)
@@ -589,6 +612,7 @@ offset_top = 29.0
 offset_right = 71.0
 offset_bottom = 49.0
 show_percentage = false
+metadata/_edit_lock_ = true
 
 [node name="PauseMenu" type="CanvasLayer" parent="Node2D/CanvasLayer" unique_id=175287626]
 process_mode = 3

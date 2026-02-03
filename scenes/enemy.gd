@@ -100,5 +100,6 @@ func _physics_process(delta):
 
 func _on_kill_area_body_entered(body):
 	if body.is_in_group("player"):
+		ScreenFader.fade_out()
 		get_tree().change_scene_to_file("res://scenes/dead.tscn")
 		print("entra el", body.name)

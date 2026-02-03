@@ -159,6 +159,27 @@ scale = Vector2(6, 6)
 tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAAFAAAAAAACAAAAAAABAAAAAAABAAAAAAACAAAAAAABAAAAAAADAAAAAAABAAAAAAAEAAAAAAABAAAAAAAFAAMAAAACAAEAAAAAAAQAAAAAAAIAAAABAAQAAAABAAIAAAACAAQAAAABAAIAAAADAAQAAAABAAIAAAAEAAQAAAABAAIAAAAFAAQAAAACAAIAAAAFAAIAAAACAAQAAAAFAAEAAAACAAEAAAAAAAMAAAAAAAMAAAAAAAEAAAAAAAMAACA=")
 tile_set = SubResource("TileSet_0owry")
 
+[node name="Label" type="Label" parent="Node2D2" unique_id=644964629]
+offset_left = 219.00002
+offset_top = 203.0
+offset_right = 666.0
+offset_bottom = 236.0
+rotation = 0.0056364117
+theme_override_fonts/font = ExtResource("9_4yavu")
+theme_override_font_sizes/font_size = 32
+text = "PRESS [F] TO TURN ON THE FLASHLIGHT"
+
+[node name="Label" type="Label" parent="Node2D2/Label" unique_id=1263086096]
+layout_mode = 0
+offset_left = -83.670815
+offset_top = 413.47812
+offset_right = 120.329185
+offset_bottom = 446.47812
+rotation = -1.5794482
+theme_override_fonts/font = ExtResource("9_4yavu")
+theme_override_font_sizes/font_size = 32
+text = "LAB ZONE #020126"
+
 [node name="door_spawn_to_main" type="Area2D" parent="Node2D2" unique_id=280856628]
 position = Vector2(13, 480)
 script = ExtResource("4_utm62")
@@ -195,16 +216,6 @@ position = Vector2(854, 161)
 
 [node name="Player" parent="Node2D2" unique_id=354997750 instance=ExtResource("3_g4g62")]
 position = Vector2(1081, 694)
-
-[node name="Label" type="Label" parent="Node2D2" unique_id=644964629]
-offset_left = 129.99998
-offset_top = 705.99994
-offset_right = 577.0
-offset_bottom = 738.99994
-rotation = -1.5620421
-theme_override_fonts/font = ExtResource("9_4yavu")
-theme_override_font_sizes/font_size = 32
-text = "PRESS [F] TO TURN ON THE FLASHLIGHT"
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="Node2D2" unique_id=914310137]
 process_mode = 3

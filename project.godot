@@ -21,6 +21,7 @@ GameState="*uid://2sq1ateipm4b"
 AudioManager="*uid://fu3dvepo2rwp"
 TensionManager="*uid://cs6bgx8emvdak"
 AspectController="*uid://d4iflp257v1ea"
+ScreenFader="*uid://dw75swcevnuys"
 
 [display]
 
