@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://df32nmuyi6lss"]
 
 [ext_resource type="Script" uid="uid://cyq75t1s4to4i" path="res://dead.gd" id="1_4orh1"]
-[ext_resource type="Script" uid="uid://d4iflp257v1ea" path="res://scenes/aspect_controller.gd" id="2_2s5mr"]
 [ext_resource type="FontFile" uid="uid://cbnfihl2xpd8b" path="res://sprites/VT323-Regular.ttf" id="2_tnkcu"]
 [ext_resource type="Shader" uid="uid://bcwqg6dauopil" path="res://gbaspawn.gdshader" id="3_tnkcu"]
 
@@ -15,69 +14,56 @@ shader_parameter/vignette_softness = 0.6
 shader_parameter/scanline_strength = 0.12
 shader_parameter/scanline_density = 600.0
 
-[node name="GameOver" type="Control" unique_id=794230787]
-layout_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -577.0
-offset_top = -324.0
-offset_right = 577.0
-offset_bottom = 324.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="GameOver" type="Node2D" unique_id=825361823]
 script = ExtResource("1_4orh1")
 
-[node name="AspectController" type="Node" parent="." unique_id=1191268307]
-script = ExtResource("2_2s5mr")
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2038156364]
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=839055896]
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=839055896]
 material = SubResource("ShaderMaterial_2s5mr")
-layout_mode = 0
 offset_right = 1149.0
 offset_bottom = 644.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1739310217]
-layout_mode = 1
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer" unique_id=1739310217]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -117.0
-offset_top = -43.25
-offset_right = 117.0
-offset_bottom = 3.75
+offset_left = -145.0
+offset_top = -119.0
+offset_right = 147.0
+offset_bottom = 73.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="VBoxContainer" unique_id=39298177]
+[node name="Label" type="Label" parent="CanvasLayer/VBoxContainer" unique_id=39298177]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_fonts/font = ExtResource("2_tnkcu")
 theme_override_font_sizes/font_size = 56
 text = "HE CAUGHT YOU"
 
-[node name="restart" type="Button" parent="VBoxContainer" unique_id=1867212304]
+[node name="restart" type="Button" parent="CanvasLayer/VBoxContainer" unique_id=1867212304]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_tnkcu")
 theme_override_font_sizes/font_size = 32
 text = "RESTART"
 
-[node name="main menu" type="Button" parent="VBoxContainer" unique_id=681438209]
+[node name="main menu" type="Button" parent="CanvasLayer/VBoxContainer" unique_id=681438209]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_tnkcu")
 theme_override_font_sizes/font_size = 32
 text = "MAIN MENU"
 
-[node name="quit" type="Button" parent="VBoxContainer" unique_id=2042028352]
+[node name="quit" type="Button" parent="CanvasLayer/VBoxContainer" unique_id=2042028352]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_tnkcu")
 theme_override_font_sizes/font_size = 32
 text = "QUIT..."
 
-[connection signal="pressed" from="VBoxContainer/restart" to="." method="_on_restart_pressed"]
-[connection signal="pressed" from="VBoxContainer/main menu" to="." method="_on_main_menu_pressed"]
-[connection signal="pressed" from="VBoxContainer/quit" to="." method="_on_quit_pressed"]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=865294124]
+
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/main menu" to="." method="_on_main_menu_pressed"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/quit" to="." method="_on_quit_pressed"]

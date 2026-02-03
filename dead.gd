@@ -1,4 +1,4 @@
-extends Control
+extends Node2D
 
 func _ready():
 	ScreenFader.fade_in()
